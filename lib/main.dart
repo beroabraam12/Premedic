@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
         ),
         accentColor: Color(0xFFDE6161),
         primaryColor: Color(0xFF31A6C3),
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blue ,
       ),
       routes:{
         
