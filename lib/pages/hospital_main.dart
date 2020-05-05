@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/pages/Hospital&Clinc/buttons.dart';
-import './dropdownlist.dart';
-import './search.dart';
-import './cards.dart';
+import '../components/Hospital&Clinc/buttons.dart';
+import '../components/Hospital&Clinc/dropdownlist.dart';
+import '../components/Hospital&Clinc/search.dart';
+import '../components/Hospital&Clinc/cards.dart';
 
 class HospitalsClinics extends StatefulWidget {
   @override
