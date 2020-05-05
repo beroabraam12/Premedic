@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './pages/hospital_main.dart';
+import './pages/hospital&clinc.dart';
 import 'package:flutter/services.dart';
 
 void main() {
