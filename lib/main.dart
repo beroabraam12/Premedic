@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './pages/hospital&clinc.dart';
+import 'package:premedic/pages/hospital_clinc.dart';
+import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       routes:{
-        '/':(BuildContext context) => HospitalsClinics()
+        HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
       }
     );
   }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Cards extends StatefulWidget {
+class HospitalClincCards extends StatefulWidget {
   @override
-  _CardsState createState() => _CardsState();
+  _HospitalClincCardsState createState() => _HospitalClincCardsState();
 }
 
-class _CardsState extends State<Cards> {
+class _HospitalClincCardsState extends State<HospitalClincCards> {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> cards = [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/Models/dropdownlistCity.dart';
+import 'package:premedic/models/city.dart';
 
 class Dropdown extends StatefulWidget {
   @override
@@ -10,10 +10,10 @@ class _DropdownState extends State<Dropdown> {
   @override
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);
-    List<City> cities = [
-      new City(name: " Maadi ,Cairo", icon: Icons.location_on),
-      new City(name: "paris", icon: Icons.location_on),
-      new City(name: "new york", icon: Icons.location_on),
+    List<CityModel> cities = [
+       CityModel(name: " Maadi ,Cairo", icon: Icons.location_on),
+       CityModel(name: "paris", icon: Icons.location_on),
+       CityModel(name: "new york", icon: Icons.location_on),
     ];
 
     int index = 0;
@@ -40,27 +40,32 @@ class _DropdownState extends State<Dropdown> {
                   borderRadius: BorderRadius.circular(15.0)),
               alignedDropdown: true,
               child: DropdownButton(
-                  icon: Icon(Icons.arrow_drop_down),
-                  isExpanded: false,
-                  value: cities[index],
-                  items: cities.map((City value) {
-                    return new DropdownMenuItem(
+                icon: Icon(Icons.arrow_drop_down),
+                isExpanded: false,
+                value: cities[index],
+                items: cities.map(
+                  (CityModel value) {
+                    return  DropdownMenuItem(
                       value: value,
-                      child: new Row(
+                      child:  Row(
                         children: <Widget>[
-                          new Icon(
+                           Icon(
                             value.icon,
                           ),
-                          new Text(value.name)
+                           Text(value.name)
                         ],
                       ),
                     );
-                  }).toList(),
-                  onChanged: (City value) {
-                    setState(() {
+                  },
+                ).toList(),
+                onChanged: (CityModel value) {
+                  setState(
+                    () {
                       index = cities.indexOf(value);
-                    });
-                  }),
+                    },
+                  );
+                },
+              ),
             ),
           ),
         ),
