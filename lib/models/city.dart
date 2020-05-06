@@ -1,10 +1,11 @@
+  
 import 'package:flutter/material.dart';
 
-class City {
+class CityModel {
   final String name;
   final IconData icon;
 
-  const City({
+  const CityModel({
     this.name,
     this.icon,
   });

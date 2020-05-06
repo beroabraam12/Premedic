@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ButtonsRow extends StatefulWidget {
+class FilterRow extends StatefulWidget {
   @override
-  _ButtonsRowState createState() => _ButtonsRowState();
+  _FilterRowState createState() => _FilterRowState();
 }
 
-class _ButtonsRowState extends State<ButtonsRow> {
+class _FilterRowState extends State<FilterRow> {
   bool pressAttention = false;
   Color _buttonColor1 = Color(0xFFDE6161);
   Color _buttonColor2 = Colors.grey[400];
