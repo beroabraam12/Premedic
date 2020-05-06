@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
+
 import 'package:premedic/pages/passwordreset.dart';
-
-
-
-=======
 import 'package:premedic/pages/hospital_clinc.dart';
 import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
->>>>>>> 478c202e51d77197410c9df6e72cc85319241663
 
 void main() {
   runApp(MyApp());
@@ -32,7 +27,7 @@ class MyApp extends StatelessWidget {
           ),
           title: TextStyle(
             color: Colors.black87,
-            fontSize: 24,
+            fontSize: 30,
             letterSpacing: 0.5
           ),
           overline: TextStyle(
@@ -68,10 +63,6 @@ class MyApp extends StatelessWidget {
             color: Color(0xFFFAFAFA),
             letterSpacing: 15.0  ,
           ),
-          title: TextStyle(
-           color: Colors.white,
-            fontSize:30,
-          ),
         ),
         iconTheme: IconThemeData(
           size: 30,
@@ -79,21 +70,14 @@ class MyApp extends StatelessWidget {
         ),
         accentColor: Color(0xFFDE6161),
         primaryColor: Color(0xFF31A6C3),
-<<<<<<< HEAD
         primarySwatch: Colors.blue ,
         
         
       ),
+      
       routes:{
-          '/': (BuildContext context) => PasswordResetPage(),
-        
-=======
-        primarySwatch: Colors.blue,
-        backgroundColor: Colors.white,
-      ),
-      routes:{
+        '/': (BuildContext context) => PasswordResetPage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
->>>>>>> 478c202e51d77197410c9df6e72cc85319241663
       }
     );
   }
