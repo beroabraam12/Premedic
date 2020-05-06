@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:premedic/pages/passwordreset.dart';
+
+
+
 
 void main() => runApp(MyApp());
 
@@ -41,6 +45,15 @@ class MyApp extends StatelessWidget {
             color: Colors.black,
             letterSpacing: 0.15,
           ),
+           button:  TextStyle(
+            fontSize: 16,
+            color: Color(0xFFFAFAFA),
+            letterSpacing: 15.0  ,
+          ),
+          title: TextStyle(
+           color: Colors.white,
+            fontSize:30,
+          ),
         ),
         iconTheme: IconThemeData(
           size: 30,
@@ -49,8 +62,11 @@ class MyApp extends StatelessWidget {
         accentColor: Color(0xFFDE6161),
         primaryColor: Color(0xFF31A6C3),
         primarySwatch: Colors.blue ,
+        
+        
       ),
       routes:{
+          '/': (BuildContext context) => PasswordResetPage(),
         
       }
     );

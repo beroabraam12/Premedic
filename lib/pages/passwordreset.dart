@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/components/login/discountcard.dart';
+import 'package:premedic/components/PasswordReset/passwordreset.dart';
 
-class LoginPage extends StatefulWidget {
+
+class PasswordResetPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _PasswordResetPageState createState() => _PasswordResetPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _PasswordResetPageState extends State<PasswordResetPage> {
   get decoration => null;
 
   @override
@@ -22,36 +23,45 @@ class _LoginPageState extends State<LoginPage> {
         ),
         child: ListView(
           children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {},
+            ),
             Container(
               width: mediaQuery.size.width,
               margin: EdgeInsets.symmetric(
-               
                 vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
+                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.09,
               ),
               child: Center(
                 child: Text(
-                  "Login",
+                  "Password Reset",
                   style: Theme.of(context).textTheme.title,
                 ),
               ),
             ),
             Container(
-             width: mediaQuery.size.width,
+              child: Center(
+                child: Text(
+                  "Enter new password to reset the old one ",
+                  style: Theme.of(context).textTheme.subhead,
+                ),
+              ),
+            ),
+            Container(
+              width: mediaQuery.size.width,
               margin: EdgeInsets.symmetric(
-               
                 vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.00,
+                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
               ),
               decoration: new BoxDecoration(boxShadow: [
                 new BoxShadow(
-                 
                   blurRadius: 20.0,
                 ),
               ]),
               child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraint) {
-                  return DiscountCard(constraint);
+                  return PasswordReset(constraint);
                 },
               ),
             ),

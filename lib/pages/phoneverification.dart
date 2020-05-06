@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/components/login/discountcard.dart';
+import 'package:premedic/components/VerificatuionPhone/verificationphone.dart';
 
-class LoginPage extends StatefulWidget {
+
+class PhoneVerificationPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _PhoneVerificationPageState createState() => _PhoneVerificationPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
   get decoration => null;
 
   @override
@@ -22,26 +23,48 @@ class _LoginPageState extends State<LoginPage> {
         ),
         child: ListView(
           children: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () {},
+                ),
             Container(
               width: mediaQuery.size.width,
               margin: EdgeInsets.symmetric(
                
                 vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
+                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.09,
               ),
               child: Center(
-                child: Text(
-                  "Login",
+                child: 
+                Text(
+                  "Phone Verification ",
                   style: Theme.of(context).textTheme.title,
                 ),
               ),
             ),
-            Container(
+          Container(
+             
+              child: Center(
+                child: Text(
+                  "Enter phone number ",
+                  style: Theme.of(context).textTheme.subhead,
+                ),
+              ),),
+              Container(
+             
+              child: Center(
+                child: Text(
+                  "to send verifition code",
+                  style: Theme.of(context).textTheme.subhead,
+                ),
+              ),
+            ),
+             Container(
              width: mediaQuery.size.width,
               margin: EdgeInsets.symmetric(
                
                 vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.00,
+                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
               ),
               decoration: new BoxDecoration(boxShadow: [
                 new BoxShadow(
@@ -51,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
               ]),
               child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraint) {
-                  return DiscountCard(constraint);
+                  return VerificationPhone(constraint);
                 },
               ),
             ),
