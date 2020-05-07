@@ -79,9 +79,9 @@ class _HospitalsClinicsPageState extends State<HospitalsClinicsPage> {
                     Search(),
                     Container(
                       width: mediaquery.size.width * 0.9,
-                      height:
-                          (mediaquery.size.height - mediaquery.padding.bottom) *
-                              0.54,
+                        height:
+                          (mediaquery.size.height) *
+                              0.52,
                       padding: EdgeInsets.only(
                           top: (mediaquery.size.height -
                                   mediaquery.padding.top) *

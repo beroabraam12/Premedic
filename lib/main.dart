@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           ),
           title: TextStyle(
             color: Colors.black87,
-            fontSize: 30,
+            fontSize: 25,
             letterSpacing: 0.5
           ),
           overline: TextStyle(
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
            button:  TextStyle(
             fontSize: 16,
             color: Color(0xFFFAFAFA),
-            letterSpacing: 15.0  ,
+            letterSpacing: 0.15  ,
           ),
         ),
         iconTheme: IconThemeData(
@@ -70,14 +70,15 @@ class MyApp extends StatelessWidget {
         ),
         accentColor: Color(0xFFDE6161),
         primaryColor: Color(0xFF31A6C3),
-        primarySwatch: Colors.blue ,
-        
-        
+        primarySwatch: Colors.blue,
       ),
       
-      routes:{
+      /* routes:{
         '/': (BuildContext context) => PasswordResetPage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
+      } */
+      routes:{
+        '/': (BuildContext context) => HospitalsClinicsPage(),
       }
     );
   }

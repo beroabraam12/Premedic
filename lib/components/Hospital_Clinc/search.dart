@@ -13,7 +13,7 @@ class _SearchState extends State<Search> {
       width: (mediaquery.size.width - mediaquery.padding.horizontal) * 0.9,
       height: mediaquery.size.height * 0.07,
       decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(25),
           border: Border.all(
             color: Colors.grey,

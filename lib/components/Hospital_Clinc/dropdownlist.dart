@@ -7,6 +7,8 @@ class Dropdown extends StatefulWidget {
 }
 
 class _DropdownState extends State<Dropdown> {
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);
@@ -16,7 +18,6 @@ class _DropdownState extends State<Dropdown> {
        CityModel(name: "new york", icon: Icons.location_on),
     ];
 
-    int index = 0;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +33,7 @@ class _DropdownState extends State<Dropdown> {
                   offset: Offset(2.0, 2.0),
                 )
               ],
-              color: Theme.of(context).backgroundColor,
+              color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(20))),
           child: DropdownButtonHideUnderline(
             child: ButtonTheme(
