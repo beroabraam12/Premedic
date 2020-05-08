@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+
+
 import 'package:premedic/pages/passwordreset.dart';
-import 'package:premedic/pages/hospital_clinc.dart';
-import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
       } */
       routes:{
-        '/': (BuildContext context) => HospitalsClinicsPage(),
+        '/': (BuildContext context) => PasswordResetPage(),
       }
     );
   }

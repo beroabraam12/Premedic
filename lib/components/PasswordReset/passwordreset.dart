@@ -5,19 +5,32 @@ class PasswordReset extends StatelessWidget {
   PasswordReset(this.constraint);
   @override
   Widget build(BuildContext context) {
+       var mediaQuery = MediaQuery.of(context);
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(30.0),
       ),
       color: Color(0xFFFFFFFF),
       elevation: 2,
       child: Column(
         children: <Widget>[
+           Padding(
+                  padding: EdgeInsets.only(
+                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.09,
+                  ),
+                ),
            Center(
              child: Container(
               child: Image(image: AssetImage('assets/Logo.png')),
           ),
            ),
+           Padding(
+                  padding: EdgeInsets.only(
+                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.03,
+                  ),
+                ),
             Column(
             children: <Widget>[
               Container(
@@ -38,6 +51,12 @@ class PasswordReset extends StatelessWidget {
               ),
             ],
           ),
+           Padding(
+                  padding: EdgeInsets.only(
+                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.03,
+                  ),
+                ),
            Column(
             children: <Widget>[
               Container(
@@ -67,6 +86,14 @@ class PasswordReset extends StatelessWidget {
               
             ],
           ),
+           Padding(
+                  padding: EdgeInsets.only(
+                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.03,
+                    bottom: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.03,
+                  ),
+                ),
            Container(
               child: SizedBox(
             width: 200,
@@ -83,7 +110,14 @@ class PasswordReset extends StatelessWidget {
               onPressed: () {},
             ),
           )),
-        
+         Padding(
+                  padding: EdgeInsets.only(
+                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.03,
+                    bottom: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.03,
+                  ),
+                ),
         ],
       ),
     );
