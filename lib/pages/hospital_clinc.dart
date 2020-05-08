@@ -17,12 +17,9 @@ class _HospitalsClinicsPageState extends State<HospitalsClinicsPage> {
     var mediaquery = MediaQuery.of(context);
 
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: ListView(
-        scrollDirection: Axis.vertical,
-        children: <Widget>[
-          Container(
-            height: mediaquery.size.height,
+        resizeToAvoidBottomPadding: false,
+        body: SingleChildScrollView(
+          child: Container(
             width: mediaquery.size.width,
             child: Column(
               children: <Widget>[
@@ -79,13 +76,6 @@ class _HospitalsClinicsPageState extends State<HospitalsClinicsPage> {
                     Search(),
                     Container(
                       width: mediaquery.size.width * 0.9,
-                        height:
-                          (mediaquery.size.height) *
-                              0.52,
-                      padding: EdgeInsets.only(
-                          top: (mediaquery.size.height -
-                                  mediaquery.padding.top) *
-                              0.02),
                       child: HospitalClincCards(),
                     )
                   ],
@@ -93,8 +83,6 @@ class _HospitalsClinicsPageState extends State<HospitalsClinicsPage> {
               ],
             ),
           ),
-        ],
-      ),
-    );
+        ));
   }
 }

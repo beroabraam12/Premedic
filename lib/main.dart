@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:premedic/pages/passwordreset.dart';
+//import 'package:premedic/pages/passwordreset.dart';
 import 'package:premedic/pages/hospital_clinc.dart';
 import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
