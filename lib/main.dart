@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-
-
-import 'package:premedic/pages/passwordreset.dart';
+//import 'package:premedic/pages/passwordreset.dart';
+import 'package:premedic/pages/hospital_clinc.dart';
+import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
             letterSpacing: 12.9,
           ),
           title: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
+            color: Colors.black87,
+            fontSize: 25,
             letterSpacing: 0.5
           ),
           overline: TextStyle(
@@ -78,9 +78,8 @@ class MyApp extends StatelessWidget {
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
       } */
       routes:{
-        '/': (BuildContext context) => PasswordResetPage(),
+        '/': (BuildContext context) => HospitalsClinicsPage(),
       }
     );
   }
 }
-
