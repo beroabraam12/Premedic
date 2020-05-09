@@ -32,7 +32,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
            Padding(
                   padding: EdgeInsets.only(
                     top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                        0.07,
+                        0.05,
                   ),
                 ),
               Container(
@@ -49,32 +49,36 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
              Padding(
                   padding: EdgeInsets.only(
                     top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                        0.03,
+                        0.02,
                   ),
                 ),
             Container(
               child: Center(
                 child: Text(
                   "Enter new password to reset the old one ",
-                  style: Theme.of(context).textTheme.subhead,
+               
+                  //style: Theme.of(context).textTheme.subhead,
                 ),
               ),
             ),
-            Container(
-              width: mediaQuery.size.width,
-              margin: EdgeInsets.symmetric(
-                vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.15,
-              ),
-              decoration: new BoxDecoration(boxShadow: [
-                new BoxShadow(
-                  blurRadius: 20.0,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: mediaQuery.size.width,
+                margin: EdgeInsets.symmetric(
+                  vertical:
+                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.12,
                 ),
-              ]),
-              child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraint) {
-                  return PasswordReset(constraint);
-                },
+                decoration: new BoxDecoration(boxShadow: [
+                  new BoxShadow(
+                    blurRadius: 15.0,
+                  ),
+                ]),
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraint) {
+                    return PasswordReset(constraint);
+                  },
+                ),
               ),
             ),
           ],

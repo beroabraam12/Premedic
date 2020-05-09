@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
             letterSpacing: 12.9,
           ),
           title: TextStyle(
-            color: Colors.black87,
-            fontSize: 25,
+            color: Colors.white,
+            fontSize: 30,
             letterSpacing: 0.5
           ),
           overline: TextStyle(
