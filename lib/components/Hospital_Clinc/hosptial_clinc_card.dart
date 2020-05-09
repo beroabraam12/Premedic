@@ -13,7 +13,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
   double _rating;
   @override
   Widget build(BuildContext context) {
-    List<HospitalClincModelCards> hospitalCardList = new List();
+    List<HospitalClincModelCards> hospitalCardList = List();
     hospitalCardList.add(HospitalClincModelCards(
       "Doctor Name Clinc",
       "notes bla bla bla",
