@@ -8,9 +8,8 @@ class PasswordReset extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context);
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
+        borderRadius: BorderRadius.circular(40.0),
       ),
-      color: Color(0xFFFFFFFF),
       elevation: 2,
       child: Column(
         children: <Widget>[
@@ -44,9 +43,11 @@ class PasswordReset extends StatelessWidget {
                         size: Theme.of(context).iconTheme.size,
                       ),
                     ),
-                     Container(
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Container(
                         height: 48.00,
-                        width: 236.86,
+                        width: 250,
                         decoration: BoxDecoration(
                           color: Color(0xffffffff),
                           boxShadow: [
@@ -58,29 +59,21 @@ class PasswordReset extends StatelessWidget {
                           ],
                           borderRadius: BorderRadius.circular(30.00),
                         ),
-                        child:TextField(
- enabled: false, // to trigger disabledBorder
- decoration: InputDecoration(
-   filled: true,
-   fillColor: Color(0xFFF2F2F2),
-   focusedBorder: OutlineInputBorder(
-     borderRadius: BorderRadius.all(Radius.circular(20)),
-     borderSide: BorderSide(width: 1,color: Colors.white),
-   ),
-                        // child: TextField(
-                        //   decoration: new InputDecoration(
-                        //       border: new OutlineInputBorder(
-                        //         borderRadius: const BorderRadius.all(
-                        //           const Radius.circular(10.0),
-                        //         ),
-                        //       ),
-                        //       filled: true,
-                        //       hintStyle: new TextStyle(color: Colors.grey[800]),
-                        //       hintText: "Password",
-                        //       fillColor: Colors.white70),
-                        // ),
-                         
-  ))) ],
+                        child: TextField(
+                          decoration: InputDecoration(
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Colors.grey, width: 0.0),
+                            ),
+                            border: const OutlineInputBorder(),
+                            hintText: "Password ",
+                          ),
+                          autofocus: false,
+                          obscureText: true,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -105,14 +98,17 @@ class PasswordReset extends StatelessWidget {
                         size: Theme.of(context).iconTheme.size,
                       ),
                     ),
-                    new Container(
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Container(
                         height: 48.00,
-                        width: 236.86,
+                        width: 250,
                         decoration: BoxDecoration(
                           color: Color(0xffffffff),
                           boxShadow: [
                             BoxShadow(
                               offset: Offset(0.00, 3.00),
+                              color: Color(0xff000000).withOpacity(0.16),
                               blurRadius: 6,
                             ),
                           ],
@@ -120,16 +116,18 @@ class PasswordReset extends StatelessWidget {
                         ),
                         child: TextField(
                           decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  const Radius.circular(30.0),
-                                ),
-                              ),
-                              filled: true,
-                              hintStyle: TextStyle(color: Colors.grey[800]),
-                              hintText: "Password confirmation",
-                              fillColor: Colors.white70),
-                        ))
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Colors.grey, width: 0.0),
+                            ),
+                            border: const OutlineInputBorder(),
+                            hintText: "Password confirmation",
+                          ),
+                          autofocus: false,
+                          obscureText: true,
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -149,10 +147,9 @@ class PasswordReset extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 ),
-                child: new Text(
-                  "SEND",
-                  style: Theme.of(context).textTheme.title,
-                ),
+                child: Text("SEND",
+                    //style: Theme.of(context).textTheme.title,
+                    style: TextStyle(color: Colors.white)),
                 color: Theme.of(context).accentColor,
                 onPressed: () {},
               ),

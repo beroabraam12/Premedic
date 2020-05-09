@@ -16,8 +16,8 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
     return Scaffold(
       
       body: Container(
-        decoration: new BoxDecoration(
-          image: new DecorationImage(
+        decoration:  BoxDecoration(
+          image:  DecorationImage(
             image: AssetImage("assets/background-01.png"),
             fit: BoxFit.cover,
           ),
@@ -42,14 +42,17 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                 child: Center(
                   child: Text(
                     "Password Reset",
-                    style: Theme.of(context).textTheme.title,
+                   style: TextStyle(
+              color: Colors.white,
+              fontSize: 30.0,
+            )
                   ),
                 ),
               ),
              Padding(
                   padding: EdgeInsets.only(
                     top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                        0.02,
+                        0.01,
                   ),
                 ),
             Container(
@@ -57,20 +60,23 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                 child: Text(
                   "Enter new password to reset the old one ",
                
-                  //style: Theme.of(context).textTheme.subhead,
+                 style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+            ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20.0),
               child: Container(
                 width: mediaQuery.size.width,
                 margin: EdgeInsets.symmetric(
                   vertical:
                       (mediaQuery.size.height - mediaQuery.padding.top) * 0.12,
                 ),
-                decoration: new BoxDecoration(boxShadow: [
-                  new BoxShadow(
+                decoration:  BoxDecoration(boxShadow: [
+                   BoxShadow(
                     blurRadius: 15.0,
                   ),
                 ]),
