@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-//import 'package:premedic/pages/passwordreset.dart';
+
 import 'package:premedic/pages/hospital_clinc.dart';
-import 'package:premedic/pages/pharmacies.dart';
+import 'package:premedic/pages/regestration.dart';
 import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
 
@@ -74,15 +74,15 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       
-      /* routes:{
-        '/': (BuildContext context) => PasswordResetPage(),
+       routes:{
+        '/': (BuildContext context) => RegestrationPage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
-      } */
-      routes:{
-        '/': (BuildContext context) => PharmaciesPage(),
-        HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
-        PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
-      }
+      } 
+      // routes:{
+      //   '/': (BuildContext context) => PharmaciesPage(),
+      //   HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
+      //   PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
+      // }
     );
   }
 }
