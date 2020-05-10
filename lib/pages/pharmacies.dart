@@ -120,7 +120,8 @@ class _PharmaciesPageState extends State<PharmaciesPage> {
                                   children: <Widget>[
                                     Text(
                                       pharmacyModelCardList[index].pharmacyName,
-                                      style: Theme.of(context).textTheme.title,
+                                      style:
+                                          Theme.of(context).textTheme.caption,
                                     ),
                                     Padding(
                                         padding: EdgeInsets.only(
