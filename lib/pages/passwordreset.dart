@@ -14,6 +14,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Scaffold(
+      
       body: Container(
         decoration: new BoxDecoration(
           image: new DecorationImage(
@@ -27,42 +28,57 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
               icon: Icon(Icons.arrow_back),
               onPressed: () {},
             ),
-            Container(
-              width: mediaQuery.size.width,
-              margin: EdgeInsets.symmetric(
-                vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.09,
-              ),
-              child: Center(
-                child: Text(
-                  "Password Reset",
-                  style: Theme.of(context).textTheme.title,
+            
+           Padding(
+                  padding: EdgeInsets.only(
+                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.05,
+                  ),
+                ),
+              Container(
+                width: mediaQuery.size.width,
+                margin: EdgeInsets.symmetric(
+                ),
+                child: Center(
+                  child: Text(
+                    "Password Reset",
+                    style: Theme.of(context).textTheme.title,
+                  ),
                 ),
               ),
-            ),
+             Padding(
+                  padding: EdgeInsets.only(
+                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.02,
+                  ),
+                ),
             Container(
               child: Center(
                 child: Text(
                   "Enter new password to reset the old one ",
-                  style: Theme.of(context).textTheme.subhead,
+               
+                  //style: Theme.of(context).textTheme.subhead,
                 ),
               ),
             ),
-            Container(
-              width: mediaQuery.size.width,
-              margin: EdgeInsets.symmetric(
-                vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
-              ),
-              decoration: new BoxDecoration(boxShadow: [
-                new BoxShadow(
-                  blurRadius: 20.0,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: mediaQuery.size.width,
+                margin: EdgeInsets.symmetric(
+                  vertical:
+                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.12,
                 ),
-              ]),
-              child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraint) {
-                  return PasswordReset(constraint);
-                },
+                decoration: new BoxDecoration(boxShadow: [
+                  new BoxShadow(
+                    blurRadius: 15.0,
+                  ),
+                ]),
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraint) {
+                    return PasswordReset(constraint);
+                  },
+                ),
               ),
             ),
           ],
