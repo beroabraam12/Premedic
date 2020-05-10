@@ -22,37 +22,41 @@ class _LoginPageState extends State<LoginPage> {
         ),
         child: ListView(
           children: <Widget>[
-            Container(
-              width: mediaQuery.size.width,
-              margin: EdgeInsets.symmetric(
-               
-                vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
-              ),
-              child: Center(
-                child: Text(
-                  "Login",
-                  style: Theme.of(context).textTheme.title,
-                ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
               ),
             ),
             Container(
-             width: mediaQuery.size.width,
-              margin: EdgeInsets.symmetric(
-               
-                vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.00,
+              width: mediaQuery.size.width,
+              margin: EdgeInsets.symmetric(),
+              child: Center(
+                child: Text("Login",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30.0,
+                    )),
               ),
-              decoration: new BoxDecoration(boxShadow: [
-                new BoxShadow(
-                 
-                  blurRadius: 20.0,
+            ),
+            
+            Padding(
+              padding: const EdgeInsets.only(left:20.0,right: 20.0),
+              child: Container(
+                width: mediaQuery.size.width,
+                margin: EdgeInsets.symmetric(
+                  vertical:
+                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
                 ),
-              ]),
-              child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraint) {
-                  return DiscountCard(constraint);
-                },
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                    blurRadius: 15.0,
+                  ),
+                ]),
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraint) {
+                    return DiscountCard(constraint);
+                  },
+                ),
               ),
             ),
           ],
