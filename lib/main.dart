@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:premedic/pages/hospital_clinc.dart';
+<<<<<<< HEAD
 import 'package:premedic/pages/patient.dart';
+=======
+import 'package:premedic/pages/patient_profile.dart';
+import 'package:premedic/pages/pharmacies.dart';
+>>>>>>> df81aa368a1fc83709fa267301c6b88c5d799ad0
 import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
 
@@ -88,6 +93,7 @@ class MyApp extends StatelessWidget {
        routes:{
         '/': (BuildContext context) => PatientPage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
+<<<<<<< HEAD
       } 
       // routes:{
       //   '/': (BuildContext context) => BlogsPage(),
@@ -97,6 +103,17 @@ class MyApp extends StatelessWidget {
       //   BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
       // //  RegestrationPage.routeName:(BuildContext context) => RegestrationPage(),
       // }
+=======
+      } */
+      routes:{
+        '/': (BuildContext context) => PatientProfile(),
+        HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
+        PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
+        BlogsPage.routeName:(BuildContext context) => BlogsPage(),
+        BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
+        PatientProfile.routeName:(BuildContext context) => PatientProfile(),
+      }
+>>>>>>> df81aa368a1fc83709fa267301c6b88c5d799ad0
     );
   }
 }
