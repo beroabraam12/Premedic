@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PatientPage extends StatefulWidget {
-  static final routeName = '/w';
+  static final routeName = '/';
   @override
   _PatientPageState createState() => _PatientPageState();
 }
@@ -15,8 +15,8 @@ class _PatientPageState extends State<PatientPage> {
       body: ListView(
         children: <Widget>[
           Container(
-            height: 368.00,
-            width: 375.00,
+           height: mediaQuery.size.height * 0.20,
+            width: mediaQuery.size.width,
             decoration: BoxDecoration(
               color: Color(0xff31a6c3),
               borderRadius: BorderRadius.only(

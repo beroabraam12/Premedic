@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:premedic/components/customIcons/custom_icon_icons.dart';
 
 class HomePage extends StatefulWidget {
+  
   static final routeName = '/';
   @override
   _HomePageState createState() => _HomePageState();
@@ -16,8 +17,8 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: <Widget>[
           Container(
-            height: 370.00,
-            width: 375.00,
+           height: mediaQuery.size.height * 0.47,
+            width: mediaQuery.size.width,
             decoration: BoxDecoration(
               color: Color(0xff31a6c3),
               borderRadius: BorderRadius.only(
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Container(
-                    height: 139.00,
+                   height: mediaQuery.size.height * 0.18,
                     width: 146.00,
                     decoration: BoxDecoration(
                       color: Color(0xffffffff),
@@ -172,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Container(
-                    height: 139.00,
+                    height: mediaQuery.size.height * 0.18,
                     width: 146.00,
                     decoration: BoxDecoration(
                       color: Color(0xffffffff),
@@ -219,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Container(
-                    height: 139.00,
+                    height: mediaQuery.size.height * 0.18,
                     width: 146.00,
                     decoration: BoxDecoration(
                       color: Color(0xffffffff),
@@ -257,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Container(
-                    height: 139.00,
+                     height: mediaQuery.size.height * 0.18,
                     width: 146.00,
                     decoration: BoxDecoration(
                       color: Color(0xffffffff),
