@@ -69,6 +69,7 @@ class VerificationPhone extends StatelessWidget {
                               ),
                               border: const OutlineInputBorder(),
                               hintText: "Phone Number ",
+                              
                             ),
                             keyboardType: TextInputType.phone,
                            ),

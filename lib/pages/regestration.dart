@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/components/login/discountcard.dart';
+import 'package:premedic/components/RegisterCard/registercard.dart';
+
 
 class RegestrationPage extends StatefulWidget {
   @override
@@ -54,7 +55,7 @@ class _RegestrationPage extends State<RegestrationPage> {
                 ]),
                 child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraint) {
-                    return DiscountCard(constraint);
+                    return RegisterCard(constraint);
                   },
                 ),
               ),

@@ -32,13 +32,15 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
               margin: EdgeInsets.symmetric(
                
                 vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.09,
+                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.02,
               ),
               child: Center(
                 child: 
                 Text(
                   "Verification Code",
-                  style: Theme.of(context).textTheme.title,
+                   style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30.0,)
                 ),
               ),
             ),
@@ -47,7 +49,10 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
               child: Center(
                 child: Text(
                   "We will send Verification Code ",
-                  style: Theme.of(context).textTheme.subhead,
+                    style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+            ),
                 ),
               ),),
               Container(
@@ -55,7 +60,10 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
               child: Center(
                 child: Text(
                   "with in 2 minutes to verify you number",
-                  style: Theme.of(context).textTheme.subhead,
+                    style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+            ),
                 ),
               ),
             ),
@@ -64,7 +72,7 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
               margin: EdgeInsets.symmetric(
                
                 vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
+                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.15,
               ),
               decoration: new BoxDecoration(boxShadow: [
                 new BoxShadow(
