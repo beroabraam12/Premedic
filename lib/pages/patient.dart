@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PatientPage extends StatefulWidget {
+  static final routeName = '/w';
   @override
   _PatientPageState createState() => _PatientPageState();
 }

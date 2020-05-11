@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:premedic/pages/blog_details.dart';
+import 'package:premedic/pages/home.dart';
 
 import 'package:premedic/pages/hospital_clinc.dart';
-<<<<<<< HEAD
 import 'package:premedic/pages/patient.dart';
-=======
+
 import 'package:premedic/pages/patient_profile.dart';
 import 'package:premedic/pages/pharmacies.dart';
->>>>>>> df81aa368a1fc83709fa267301c6b88c5d799ad0
 import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
+
+import 'pages/blogs.dart';
 
 void main() {
   runApp(MyApp());
@@ -90,11 +92,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       
-       routes:{
-        '/': (BuildContext context) => PatientPage(),
-        HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
-<<<<<<< HEAD
-      } 
+      //  routes:{
+      //   '/': (BuildContext context) => PatientPage(),
+      //   HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
+      // } 
       // routes:{
       //   '/': (BuildContext context) => BlogsPage(),
       //   HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
@@ -103,17 +104,17 @@ class MyApp extends StatelessWidget {
       //   BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
       // //  RegestrationPage.routeName:(BuildContext context) => RegestrationPage(),
       // }
-=======
-      } */
+    
       routes:{
-        '/': (BuildContext context) => PatientProfile(),
+        //'/': (BuildContext context) => PatientProfile(),
+        HomePage.routeName: (BuildContext ctx)=>HomePage(),
+        PatientPage.routeName: (BuildContext ctx)=>PatientPage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
         PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
         BlogsPage.routeName:(BuildContext context) => BlogsPage(),
         BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
         PatientProfile.routeName:(BuildContext context) => PatientProfile(),
       }
->>>>>>> df81aa368a1fc83709fa267301c6b88c5d799ad0
     );
   }
 }

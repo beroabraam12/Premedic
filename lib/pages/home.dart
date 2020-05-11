@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:premedic/components/customIcons/custom_icon_icons.dart';
 
 class HomePage extends StatefulWidget {
+  static final routeName = '/';
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -14,13 +16,13 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: <Widget>[
           Container(
-            height: 368.00,
+            height: 370.00,
             width: 375.00,
             decoration: BoxDecoration(
               color: Color(0xff31a6c3),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(150.00),
-                bottomRight: Radius.circular(150.00),
+                bottomRight: Radius.circular(130.00),
               ),
             ),
             child: Column(
@@ -111,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                     color: Theme.of(context).accentColor,
                   ),
                   child: Icon(
-                    Icons.scanner,
+                    CustomIcon.barcode,
                     color: Colors.white,
                     size: Theme.of(context).iconTheme.size,
                   ),
