@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-
-//import 'package:premedic/pages/passwordreset.dart';
 import 'package:premedic/pages/hospital_clinc.dart';
-import 'package:premedic/pages/regestration.dart';
+import 'package:premedic/pages/patient.dart';
 import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
 
@@ -12,7 +10,7 @@ void main() {
    SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitUp,
-  ]); 
+  ]);  
 }
 
 class MyApp extends StatelessWidget {
@@ -88,7 +86,7 @@ class MyApp extends StatelessWidget {
       ),
       
        routes:{
-        '/': (BuildContext context) => RegestrationPage(),
+        '/': (BuildContext context) => PatientPage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
       } 
       // routes:{
