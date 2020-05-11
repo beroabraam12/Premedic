@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+//import 'package:premedic/pages/passwordreset.dart';
 import 'package:premedic/pages/hospital_clinc.dart';
 import 'package:premedic/pages/regestration.dart';
 import './pages/hospital_clinc.dart';
@@ -62,7 +63,19 @@ class MyApp extends StatelessWidget {
            button:  TextStyle(
             fontSize: 16,
             color: Color(0xFFFAFAFA),
-            letterSpacing: 0.15  ,
+            letterSpacing: 0.15,
+          ),
+          caption: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey[300],
+            letterSpacing: 2,
+          ),
+          subhead: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+            letterSpacing: 1,
           ),
         ),
         iconTheme: IconThemeData(
@@ -79,9 +92,12 @@ class MyApp extends StatelessWidget {
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
       } 
       // routes:{
-      //   '/': (BuildContext context) => PharmaciesPage(),
+      //   '/': (BuildContext context) => BlogsPage(),
       //   HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
       //   PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
+      //   BlogsPage.routeName:(BuildContext context) => BlogsPage(),
+      //   BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
+      // //  RegestrationPage.routeName:(BuildContext context) => RegestrationPage(),
       // }
     );
   }
