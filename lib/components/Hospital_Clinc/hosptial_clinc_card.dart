@@ -135,7 +135,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                                 'Perceptions Rating : $_rating',
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .subhead,
+                                                    .body1,
                                               ),
                                             ],
                                           ),
@@ -306,7 +306,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                     Text(
                                       'Rating : $_rating',
                                       style:
-                                          Theme.of(context).textTheme.subhead,
+                                          Theme.of(context).textTheme.body1,
                                     ),
                                   ],
                                 ),

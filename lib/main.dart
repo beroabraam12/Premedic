@@ -4,6 +4,7 @@ import 'package:premedic/pages/blogs.dart';
 
 //import 'package:premedic/pages/passwordreset.dart';
 import 'package:premedic/pages/hospital_clinc.dart';
+import 'package:premedic/pages/patient_profile.dart';
 import 'package:premedic/pages/pharmacies.dart';
 import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
@@ -93,11 +94,12 @@ class MyApp extends StatelessWidget {
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
       } */
       routes:{
-        '/': (BuildContext context) => BlogsPage(),
+        '/': (BuildContext context) => PatientProfile(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
         PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
         BlogsPage.routeName:(BuildContext context) => BlogsPage(),
         BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
+        PatientProfile.routeName:(BuildContext context) => PatientProfile(),
       }
     );
   }
