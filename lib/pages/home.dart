@@ -3,7 +3,7 @@ import 'package:premedic/components/customIcons/custom_icon_icons.dart';
 
 class HomePage extends StatefulWidget {
   
-  static final routeName = '/';
+ // static final routeName = '/';
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -31,10 +31,11 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: EdgeInsets.only(
                     top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                        0.10,
+                        0.05,
                   ),
                 ),
                 Container(
+                    height: mediaQuery.size.height * 0.10,
                   width: mediaQuery.size.width,
                   margin: EdgeInsets.symmetric(),
                   child: Center(

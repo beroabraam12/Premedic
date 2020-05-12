@@ -53,7 +53,9 @@ flutter:
    - assets/doctor.png
    - assets/pharmacy.png
    - assets/pharm.png
- 
+   - assets/height.png 
+   - assets/blood.png 
+   - assets/weight.png 
     
   #  - images/a_dot_ham.jpeg
 

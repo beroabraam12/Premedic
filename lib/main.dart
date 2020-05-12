@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:premedic/pages/blog_details.dart';
-import 'package:premedic/pages/home.dart';
 
 import 'package:premedic/pages/hospital_clinc.dart';
 import 'package:premedic/pages/patient.dart';
@@ -107,7 +106,6 @@ class MyApp extends StatelessWidget {
     
       routes:{
         //'/': (BuildContext context) => PatientProfile(),
-        HomePage.routeName: (BuildContext ctx)=>HomePage(),
         PatientPage.routeName: (BuildContext ctx)=>PatientPage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
         PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
