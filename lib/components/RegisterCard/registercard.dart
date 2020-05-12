@@ -8,7 +8,6 @@ class RegisterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-    
 
     return Card(
       shape: RoundedRectangleBorder(
@@ -29,24 +28,18 @@ class RegisterCard extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.05,
+              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.02,
             ),
           ),
           Container(
-            child: SizedBox(
-              width: 200,
-              height: 40.0,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                child: Text("Login",
-                    //style: Theme.of(context).textTheme.title,
-                    style: TextStyle(color: Colors.white)),
-                color: Theme.of(context).accentColor,
-                onPressed: () {},
-              ),
+            width:mediaQuery.size.width*0.15,
+            height:mediaQuery.size.height*0.15,
+            padding: const EdgeInsets.all(20.0),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.grey,
             ),
+            child:Image(image: AssetImage('assets/+.png')),
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -61,7 +54,7 @@ class RegisterCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
+                      padding: const EdgeInsets.only(left: 10.0,top:10.0),
                       child: Icon(
                         Icons.supervised_user_circle,
                         color: Theme.of(context).iconTheme.color,
@@ -90,9 +83,9 @@ class RegisterCard extends StatelessWidget {
                               borderSide: const BorderSide(
                                   color: Colors.grey, width: 0.0),
                             ),
-                           
-                            hintText: "Full Name ",
-                             hintStyle: TextStyle(color: Colors.grey,fontSize: 15),
+                            hintText: " Full Name ",
+                            hintStyle:
+                                TextStyle(color: Colors.grey, fontSize: 15),
                           ),
                         ),
                       ),
@@ -115,7 +108,7 @@ class RegisterCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
+                       padding: const EdgeInsets.only(left: 10.0,top:10.0),
                       child: Icon(
                         Icons.email,
                         color: Theme.of(context).iconTheme.color,
@@ -146,9 +139,9 @@ class RegisterCard extends StatelessWidget {
                             ),
                             border: const OutlineInputBorder(),
                             hintText: "Email ",
-                             hintStyle: TextStyle(color: Colors.grey,fontSize: 15),
+                            hintStyle:
+                                TextStyle(color: Colors.grey, fontSize: 15),
                           ),
-                
                         ),
                       ),
                     )
@@ -170,7 +163,7 @@ class RegisterCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
+                       padding: const EdgeInsets.only(left: 10.0,top:10.0),
                       child: Icon(
                         Icons.phone_android,
                         color: Theme.of(context).iconTheme.color,
@@ -201,9 +194,9 @@ class RegisterCard extends StatelessWidget {
                             ),
                             border: const OutlineInputBorder(),
                             hintText: "Mobile ",
-                             hintStyle: TextStyle(color: Colors.grey,fontSize: 15),
+                            hintStyle:
+                                TextStyle(color: Colors.grey, fontSize: 15),
                           ),
-                         
                         ),
                       ),
                     )
@@ -225,7 +218,7 @@ class RegisterCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
+                       padding: const EdgeInsets.only(left: 10.0,top:10.0),
                       child: Icon(
                         Icons.lock,
                         color: Theme.of(context).iconTheme.color,
@@ -256,7 +249,8 @@ class RegisterCard extends StatelessWidget {
                             ),
                             border: const OutlineInputBorder(),
                             hintText: "Password ",
-                             hintStyle: TextStyle(color: Colors.grey,fontSize: 15),
+                            hintStyle:
+                                TextStyle(color: Colors.grey, fontSize: 15),
                           ),
                           autofocus: false,
                           obscureText: true,
@@ -281,7 +275,7 @@ class RegisterCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
+                      padding: const EdgeInsets.only(left: 10.0,top:10.0),
                       child: Icon(
                         Icons.lock,
                         color: Theme.of(context).iconTheme.color,
@@ -312,7 +306,8 @@ class RegisterCard extends StatelessWidget {
                             ),
                             border: const OutlineInputBorder(),
                             hintText: "Password confirmation ",
-                             hintStyle: TextStyle(color: Colors.grey,fontSize: 15),
+                            hintStyle:
+                                TextStyle(color: Colors.grey, fontSize: 15),
                           ),
                           autofocus: false,
                           obscureText: true,
@@ -329,19 +324,18 @@ class RegisterCard extends StatelessWidget {
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
             ),
           ),
-            Text(
-              'Select Gender',
-              style: TextStyle(
-                color: Theme.of(context).accentColor,
-              ),
+          Text(
+            'Select Gender',
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
             ),
-          
+          ),
+
           Padding(
             padding: EdgeInsets.only(
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
             ),
           ),
-        
 
 // RadioButtonGroup(
 //   orientation: GroupedButtonsOrientation.HORIZONTAL,
@@ -364,7 +358,7 @@ class RegisterCard extends StatelessWidget {
 //     );
 //   },
 // ),
-          
+
           Container(
             child: SizedBox(
               width: 200,

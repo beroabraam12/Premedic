@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:premedic/components/RegisterCard/registercard.dart';
 
 class RegestrationPage extends StatefulWidget {
+   static final routeName = '/RegistrationPage';
   @override
   _RegestrationPage createState() => _RegestrationPage();
 }
@@ -24,10 +25,11 @@ class _RegestrationPage extends State<RegestrationPage> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.07,
               ),
             ),
             Container(
+              height: mediaQuery.size.height*0.05,
               width: mediaQuery.size.width,
               margin: EdgeInsets.symmetric(),
               child: Center(
@@ -44,13 +46,9 @@ class _RegestrationPage extends State<RegestrationPage> {
                 width: mediaQuery.size.width,
                 margin: EdgeInsets.symmetric(
                   vertical:
-                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
+                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.05,
                 ),
-                decoration: BoxDecoration(boxShadow: [
-                  BoxShadow(
-                    blurRadius: 15.0,
-                  ),
-                ]),
+                
                 child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraint) {
                     return RegisterCard(constraint);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:premedic/components/VerificatuionPhone/verificationphone.dart';
 
 class PhoneVerificationPage extends StatefulWidget {
-  static final routeName = '/';
+  static final routeName = '/PhoneVerification';
   @override
   _PhoneVerificationPageState createState() => _PhoneVerificationPageState();
 }
