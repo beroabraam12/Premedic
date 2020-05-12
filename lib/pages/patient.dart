@@ -3,7 +3,7 @@ import 'package:premedic/components/PatientInfo/listview.dart';
 import 'package:premedic/components/PatientInfo/patientinfo.dart';
 
 class PatientPage extends StatefulWidget {
-  static final routeName = '/';
+  static final routeName = '/PatientInformation';
   @override
   _PatientPageState createState() => _PatientPageState();
 }

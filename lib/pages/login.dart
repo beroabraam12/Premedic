@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:premedic/components/login/discountcard.dart';
 
 class LoginPage extends StatefulWidget {
+   static final routeName = '/LoginPage';
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   get decoration => null;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Container(
+                            height: mediaQuery.size.height*0.05,
+
               width: mediaQuery.size.width,
               margin: EdgeInsets.symmetric(),
               child: Center(
@@ -47,11 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                   vertical:
                       (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
                 ),
-                decoration: BoxDecoration(boxShadow: [
-                  BoxShadow(
-                    blurRadius: 15.0,
-                  ),
-                ]),
+               
                 child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraint) {
                     return DiscountCard(constraint);

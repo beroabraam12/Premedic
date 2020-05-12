@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:premedic/components/RegisterCard/registercard.dart';
 
-
 class RegestrationPage extends StatefulWidget {
   @override
   _RegestrationPage createState() => _RegestrationPage();
@@ -39,9 +38,8 @@ class _RegestrationPage extends State<RegestrationPage> {
                     )),
               ),
             ),
-            
             Padding(
-              padding: const EdgeInsets.only(left:20.0,right: 20.0),
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Container(
                 width: mediaQuery.size.width,
                 margin: EdgeInsets.symmetric(

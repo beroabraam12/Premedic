@@ -22,6 +22,7 @@ class DiscountCard extends StatelessWidget {
           ),
           Center(
             child: Container(
+              height: mediaQuery.size.height*0.05,
               child: Image(image: AssetImage('assets/Logo.png')),
             ),
           ),
@@ -43,6 +44,7 @@ class DiscountCard extends StatelessWidget {
                         Icons.phone_android,
                         color: Theme.of(context).iconTheme.color,
                         size: Theme.of(context).iconTheme.size,
+                 
                       ),
                     ),
                     Padding(
@@ -152,8 +154,8 @@ class DiscountCard extends StatelessWidget {
           ),
           Container(
             child: SizedBox(
-              width: 200,
-              height: 40.0,
+            width: mediaQuery.size.width*0.60,
+             height: mediaQuery.size.height*0.06,
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),

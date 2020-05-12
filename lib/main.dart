@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:premedic/pages/blog_details.dart';
 
 import 'package:premedic/pages/hospital_clinc.dart';
+import 'package:premedic/pages/login.dart';
 import 'package:premedic/pages/patient.dart';
 
 import 'package:premedic/pages/patient_profile.dart';
 import 'package:premedic/pages/pharmacies.dart';
+import 'package:premedic/pages/phoneverification.dart';
 import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
 
@@ -106,6 +108,8 @@ class MyApp extends StatelessWidget {
     
       routes:{
         //'/': (BuildContext context) => PatientProfile(),
+        PhoneVerificationPage.routeName: (BuildContext ctx)=>PhoneVerificationPage(),
+        LoginPage.routeName: (BuildContext ctx)=>LoginPage(),
         PatientPage.routeName: (BuildContext ctx)=>PatientPage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
         PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),

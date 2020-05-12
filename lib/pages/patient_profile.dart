@@ -72,8 +72,8 @@ class _PatientProfileState extends State<PatientProfile> {
                               0.02,
                         ),
                         child: CircleAvatar(
-                          backgroundImage:
-                              NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyxwmSZ_bvZ6XLAehGVLTQ93P0h5TvQ3Unvsj1awSZPIQ-6B1y'),
+                          backgroundImage: NetworkImage(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyxwmSZ_bvZ6XLAehGVLTQ93P0h5TvQ3Unvsj1awSZPIQ-6B1y'),
                           radius: 30,
                         ),
                       ),
@@ -87,7 +87,7 @@ class _PatientProfileState extends State<PatientProfile> {
           )),
           Filter(),
           Container(
-            width: (mediaquery.size.width)*0.95,
+            width: (mediaquery.size.width) * 0.95,
             child: PatientCards(),
           )
         ],
