@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../components/Patient_Profile/filter.dart';
 import '../components/Patient_Profile/patient_card.dart';
 
-class PatientProfile extends StatefulWidget {
+class PatientProfilePage extends StatefulWidget {
   static final routeName = "/patient-profile";
   @override
-  _PatientProfileState createState() => _PatientProfileState();
+  _PatientProfilePageState createState() => _PatientProfilePageState();
 }
 
-class _PatientProfileState extends State<PatientProfile> {
+class _PatientProfilePageState extends State<PatientProfilePage> {
   @override
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);

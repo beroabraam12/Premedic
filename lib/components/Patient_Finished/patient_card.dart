@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:premedic/models/patient_model.dart';
+import 'package:rating_bar/rating_bar.dart';
 
 class PatientCards extends StatefulWidget {
   @override
@@ -8,6 +9,7 @@ class PatientCards extends StatefulWidget {
 }
 
 class _PatientCardsState extends State<PatientCards> {
+  double _rating;
   @override
   Widget build(BuildContext context) {
     List<PatientCardModel> patientCardList = List();
@@ -77,7 +79,7 @@ class _PatientCardsState extends State<PatientCards> {
                                           top: (mediaquery.size.height -
                                                   mediaquery.padding.top) *
                                               0.02),
-                                      height: mediaquery.size.height * 0.8,
+                                      height: mediaquery.size.height * 0.85,
                                       width: mediaquery.size.width,
                                       child: Column(
                                         children: <Widget>[
@@ -235,7 +237,7 @@ class _PatientCardsState extends State<PatientCards> {
                                               padding: EdgeInsets.only(
                                             top: (mediaquery.size.height -
                                                     mediaquery.padding.top) *
-                                                0.02,
+                                                0.003,
                                           )),
                                           Row(
                                             mainAxisSize: MainAxisSize.min,
@@ -273,6 +275,47 @@ class _PatientCardsState extends State<PatientCards> {
                                                 ],
                                               ),
                                             ],
+                                          ),
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                            top: (mediaquery.size.height -
+                                                    mediaquery.padding.top) *
+                                                0.025,
+                                          )),
+                                          Text(
+                                            'Rate This Perceptions',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle,
+                                          ),
+                                          Text(
+                                            'Your rate is very important to us\nimprove the quality of listed doctor',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .overline,
+                                          ),
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                            top: (mediaquery.size.height -
+                                                    mediaquery.padding.top) *
+                                                0.015,
+                                          )),
+                                          RatingBar(
+                                            onRatingChanged: (double rating) {
+                                              setState(() {
+                                                rating = _rating;
+                                              });
+                                            },
+                                            filledIcon: Icons.star,
+                                            emptyIcon: Icons.star_border,
+                                            halfFilledIcon: Icons.star_half,
+                                            isHalfAllowed: true,
+                                            filledColor: Colors.yellow,
+                                            emptyColor: Colors.grey,
+                                            halfFilledColor: Colors.yellow,
+                                            initialRating: 0,
+                                            maxRating: 5,
+                                            size: 40,
                                           ),
                                         ],
                                       )),
@@ -413,4 +456,3 @@ class _PatientCardsState extends State<PatientCards> {
     );
   }
 }
- 

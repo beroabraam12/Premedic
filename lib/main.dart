@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/pages/blog_details.dart';
-
-import 'package:premedic/pages/hospital_clinc.dart';
-import 'package:premedic/pages/login.dart';
-import 'package:premedic/pages/patient.dart';
-
-import 'package:premedic/pages/patient_profile.dart';
-import 'package:premedic/pages/pharmacies.dart';
-import 'package:premedic/pages/phoneverification.dart';
-import 'package:premedic/pages/regestration.dart';
-import './pages/hospital_clinc.dart';
 import 'package:flutter/services.dart';
 
-import 'pages/blogs.dart';
+import './pages/blog_details.dart';
+import './pages/hospital_clinc.dart';
+import './pages/login.dart';
+import './pages/patient.dart';
+import './pages/patient_profile.dart';
+import './pages/pharmacies.dart';
+import './pages/phoneverification.dart';
+import './pages/regestration.dart';
+import './pages/blogs.dart';
 
 void main() {
   runApp(MyApp());
@@ -84,6 +81,11 @@ class MyApp extends StatelessWidget {
             color: Colors.black87,
             letterSpacing: 1,
           ),
+          display1: TextStyle(
+            fontSize: 21,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          )
         ),
         iconTheme: IconThemeData(
           size: 30,
@@ -94,21 +96,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       
-      //  routes:{
-      //   '/': (BuildContext context) => PatientPage(),
-      //   HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage()
-      // } 
-      // routes:{
-      //   '/': (BuildContext context) => BlogsPage(),
-      //   HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
-      //   PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
-      //   BlogsPage.routeName:(BuildContext context) => BlogsPage(),
-      //   BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
-      // //  RegestrationPage.routeName:(BuildContext context) => RegestrationPage(),
-      // }
     
       routes:{
-        //'/': (BuildContext context) => PatientProfile(),
         RegestrationPage.routeName: (BuildContext ctx)=>RegestrationPage(),
         PhoneVerificationPage.routeName: (BuildContext ctx)=>PhoneVerificationPage(),
         LoginPage.routeName: (BuildContext ctx)=>LoginPage(),
@@ -117,7 +106,7 @@ class MyApp extends StatelessWidget {
         PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
         BlogsPage.routeName:(BuildContext context) => BlogsPage(),
         BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
-        PatientProfile.routeName:(BuildContext context) => PatientProfile(),
+        PatientProfilePage.routeName:(BuildContext context) => PatientProfilePage(),
       }
     );
   }

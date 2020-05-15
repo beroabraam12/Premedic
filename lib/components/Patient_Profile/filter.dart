@@ -9,11 +9,9 @@ class _FilterState extends State<Filter> {
   bool pressAttention = false;
   Color _buttonColor1 = Color(0xFFDE6161);
   Color _buttonColor2 = Colors.grey[400];
-  
 
   Color _textColor1 = Colors.white;
   Color _textColor2 = Colors.black;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +32,11 @@ class _FilterState extends State<Filter> {
                 _textColor2 = Colors.black;
               });
             }),
-            Padding(padding: EdgeInsets.symmetric(
-              horizontal: (MediaQuery.of(context).size.width - MediaQuery.of(context).padding.horizontal) *0.03
-            )),
+        Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: (MediaQuery.of(context).size.width -
+                        MediaQuery.of(context).padding.horizontal) *
+                    0.03)),
         RaisedButton(
           onPressed: () {
             setState(() {
