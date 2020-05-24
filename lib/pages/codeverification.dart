@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/components/VerificatuionCode/verificationcard.dart';
+
+import '../components/VerificatuionCode/verificationcard.dart';
 
 
 class CodeVerificationPage extends StatefulWidget {
+  static final routeName = '/PhoneVerificationCode';
   @override
   _CodeVerificationPageState createState() => _CodeVerificationPageState();
 }
 
 class _CodeVerificationPageState extends State<CodeVerificationPage> {
-  get decoration => null;
-
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);

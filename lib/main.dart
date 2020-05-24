@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import './pages/codeverification.dart';
 import './pages/home.dart';
 import './pages/blog_details.dart';
 import './pages/hospital_clinc.dart';
@@ -102,17 +103,18 @@ class MyApp extends StatelessWidget {
       ),
       
       routes:{
-        '/': (BuildContext ctx) => LoginPage(),
-        RegestrationPage.routeName: (BuildContext ctx)=>RegestrationPage(),
-        PhoneVerificationPage.routeName: (BuildContext ctx)=>PhoneVerificationPage(),
-        LoginPage.routeName: (BuildContext ctx)=>LoginPage(),
-        PatientPage.routeName: (BuildContext ctx)=>PatientPage(),
+        '/': (BuildContext context) => LoginPage(),
+        RegestrationPage.routeName: (BuildContext context)=> RegestrationPage(),
+        PhoneVerificationPage.routeName: (BuildContext context)=> PhoneVerificationPage(),
+        LoginPage.routeName: (BuildContext context)=> LoginPage(),
+        PatientPage.routeName: (BuildContext context)=> PatientPage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
         PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
         BlogsPage.routeName:(BuildContext context) => BlogsPage(),
         BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
         PatientProfilePage.routeName:(BuildContext context) => PatientProfilePage(),
         HomePage.routeName:(BuildContext context) => HomePage(),
+        CodeVerificationPage.routeName:(BuildContext context) => CodeVerificationPage(),
       }
     );
   }

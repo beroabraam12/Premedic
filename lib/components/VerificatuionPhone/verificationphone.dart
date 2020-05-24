@@ -1,114 +1,121 @@
 import 'package:flutter/material.dart';
 
-class VerificationPhone extends StatelessWidget {
-  final constraint;
-  VerificationPhone(this.constraint);
+import 'package:premedic/pages/codeverification.dart';
+
+class VerificationPhone extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: (mediaQuery.size.width-mediaQuery.padding.horizontal)*0.04
       ),
-      color: Color(0xFFFFFFFF),
-      elevation: 2,
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.10,
+      width: mediaQuery.size.width,
+      height: mediaQuery.size.height * 0.5,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40.0),
+        ),
+        color: Color(0xFFFFFFFF),
+        elevation: 2,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.1,
+              ),
             ),
-          ),
-          Center(
-            child: Container(
-              child: Image(image: AssetImage('assets/Logo.png')),
+            Center(
+              child: Container(
+                child: Image(image: AssetImage('assets/Logo.png')),
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.05,
+            Padding(
+              padding: EdgeInsets.only(
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.07,
+              ),
             ),
-          ),
-          Column(
+            Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Container(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: Icon(
-                          Icons.phone_android,
-                          color: Theme.of(context).iconTheme.color,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Container(
-                        height: 48.00,
-                        width: 250,
-                        decoration: BoxDecoration(
-                          color: Color(0xffffffff),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(0.00, 3.00),
-                              color: Color(0xff000000).withOpacity(0.16),
-                              blurRadius: 6,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(30.00),
-                        ),
-                        child: TextField(
-                            decoration: InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 0.0),
-                              ),
-                              border: const OutlineInputBorder(),
-                              hintText: "Phone Number ",
-                              
-                            ),
-                            keyboardType: TextInputType.phone,
-                           ),
-                      ),
-                    )
-                  ],
+              Padding(
+                padding: EdgeInsets.only(
+                  left:
+                      (mediaQuery.size.width - mediaQuery.padding.left) * 0.03,
+                  top:
+                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.012,
+                ),
+                child: Icon(
+                  Icons.phone_android,
+                  color: Theme.of(context).accentColor,
+                  size: Theme.of(context).iconTheme.size,
                 ),
               ),
+              Padding(
+                  padding: EdgeInsets.only(
+                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
+              )),
+              Container(
+                width: (mediaQuery.size.width - mediaQuery.padding.horizontal) *
+                    0.7,
+                height: mediaQuery.size.height * 0.07,
+                decoration: BoxDecoration(
+                  color: Color(0xffffffff),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(1.00, 1.00),
+                      color: Color(0xff000000).withOpacity(0.20),
+                      blurRadius: 6,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(30.00),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                      hintStyle: Theme.of(context).textTheme.headline3,
+                      hintText: 'Phone Number',
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: (mediaQuery.size.width -
+                                mediaQuery.padding.horizontal) *
+                            0.05,
+                        vertical: (mediaQuery.size.height -
+                                mediaQuery.padding.vertical) *
+                            0.02,
+                      )),
+                  keyboardType: TextInputType.phone,
+                  style: TextStyle(fontSize: 18),
+                ),
+              )
             ],
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.05,
-            ),
-          ),
-          Container(
-            child: SizedBox(
-              width: 200,
-              height: 40.0,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                child: new Text(
-                  "SEND",
-                  style: TextStyle(color: Colors.white),
-                ),
-                color: Theme.of(context).accentColor,
-                onPressed: () {},
+            Padding(
+              padding: EdgeInsets.only(
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.05,
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
-              bottom: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
+            Container(
+              width: mediaQuery.size.width*0.5,
+              height: mediaQuery.size.height*0.06,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40.0),
+                ),
+                child: Text(
+                  "SEND",
+                  style: TextStyle(color: Colors.white)),
+                color: Theme.of(context).accentColor,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CodeVerificationPage()),
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

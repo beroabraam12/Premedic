@@ -12,6 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Container(
         width: mediaQuery.size.width,
         height: mediaQuery.size.height,

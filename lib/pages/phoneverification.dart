@@ -8,83 +8,69 @@ class PhoneVerificationPage extends StatefulWidget {
 }
 
 class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
-  get decoration => null;
-
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Container(
+        width: mediaQuery.size.width,
+        height: mediaQuery.size.height,
         decoration: new BoxDecoration(
           image: new DecorationImage(
             image: AssetImage("assets/background-01.png"),
             fit: BoxFit.cover,
           ),
         ),
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.arrow_back),
-              color: Colors.white,
-              onPressed: () {},
-            ),
             Padding(
               padding: EdgeInsets.only(
-                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.05,
+                top: (mediaQuery.size.height - mediaQuery.padding.top)*0.07,
+                left: (mediaQuery.size.width - mediaQuery.padding.left)*0.03,
               ),
-            ),
-            Container(
-              height: mediaQuery.size.height * 0.05,
-              width: mediaQuery.size.width,
-              child: Center(
-                child: Text(
-                  "Phone Verification ",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30.0,
-                  ),
-                ),
+              child: IconButton(
+                icon: Icon(Icons.arrow_back),
+                color: Colors.white,
+                iconSize: Theme.of(context).iconTheme.size,
+                onPressed: () {},
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
-                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.01,
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
               ),
             ),
-            Container(
-              height: mediaQuery.size.height * 0.05,
-              width: mediaQuery.size.width,
-              child: Center(
-                child: Text(
-                  "Enter phone number ",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              child: Center(
-                child: Text(
-                  "to send verifition code",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                  ),
+            Center(
+              child: Text(
+                "Phone Verification ",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 20.0, left: 20.0, top: 20),
-              child: Container(
-                width: mediaQuery.size.width,
-                child: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraint) {
-                    return VerificationPhone(constraint);
-                  },
+              padding: EdgeInsets.only(
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.015,
+              ),
+            ),
+            Center(
+              child: Text(
+                "Enter phone number\nto send verifition code",
+                style: TextStyle(
+                  color: Colors.grey[300],
+                  fontSize: 20
                 ),
               ),
+            ),
+            Container(
+              padding: EdgeInsets.only(
+                top: (mediaQuery.size.height - mediaQuery.padding.top)*0.03,
+              ),
+              child: VerificationPhone(),
             ),
           ],
         ),
