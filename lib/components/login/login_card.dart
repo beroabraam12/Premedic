@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
+import 'package:premedic/pages/home.dart';
+import 'package:premedic/pages/regestration.dart';
+import 'package:premedic/pages/phoneverification.dart';
+
 class LoginCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -35,40 +39,36 @@ class LoginCard extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(
-                  left: (mediaQuery.size.width -
-                        mediaQuery.padding.left) *
-                    0.025,
-                  top: (mediaQuery.size.height -
-                        mediaQuery.padding.top) *
-                    0.011,
-                  ),
+                  left:
+                      (mediaQuery.size.width - mediaQuery.padding.left) * 0.025,
+                  top:
+                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.011,
+                ),
                 child: Icon(
                   Icons.phone_android,
                   color: Theme.of(context).accentColor,
                   size: Theme.of(context).iconTheme.size,
                 ),
               ),
-              Padding(padding: EdgeInsets.only(
-                left: (mediaQuery.size.width -
-                        mediaQuery.padding.left) *
-                    0.04,
-                )),
+              Padding(
+                  padding: EdgeInsets.only(
+                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
+              )),
               Container(
-                width: (mediaQuery.size.width -
-                        mediaQuery.padding.horizontal) *
+                width: (mediaQuery.size.width - mediaQuery.padding.horizontal) *
                     0.7,
                 height: mediaQuery.size.height * 0.07,
-               decoration: BoxDecoration(
-                    color: Color(0xffffffff),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0.00, 3.00),
-                        color: Color(0xff000000).withOpacity(0.16),
-                        blurRadius: 6,
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(30.00),
-                  ),
+                decoration: BoxDecoration(
+                  color: Color(0xffffffff),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0.00, 3.00),
+                      color: Color(0xff000000).withOpacity(0.16),
+                      blurRadius: 6,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(30.00),
+                ),
                 child: TextField(
                   decoration: InputDecoration(
                       hintStyle: Theme.of(context).textTheme.headline3,
@@ -99,40 +99,36 @@ class LoginCard extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(
-                  left: (mediaQuery.size.width -
-                        mediaQuery.padding.left) *
-                    0.025,
-                  top: (mediaQuery.size.height -
-                        mediaQuery.padding.top) *
-                    0.013,
-                  ),
+                  left:
+                      (mediaQuery.size.width - mediaQuery.padding.left) * 0.025,
+                  top:
+                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.013,
+                ),
                 child: Icon(
                   Icons.lock,
                   color: Theme.of(context).accentColor,
                   size: Theme.of(context).iconTheme.size,
                 ),
               ),
-              Padding(padding: EdgeInsets.only(
-                left: (mediaQuery.size.width -
-                        mediaQuery.padding.left) *
-                    0.04,
-                )),
+              Padding(
+                  padding: EdgeInsets.only(
+                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
+              )),
               Container(
-                width: (mediaQuery.size.width -
-                        mediaQuery.padding.horizontal) *
+                width: (mediaQuery.size.width - mediaQuery.padding.horizontal) *
                     0.7,
                 height: mediaQuery.size.height * 0.07,
-               decoration: BoxDecoration(
-                    color: Color(0xffffffff),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0.00, 3.00),
-                        color: Color(0xff000000).withOpacity(0.16),
-                        blurRadius: 6,
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(30.00),
-                  ),
+                decoration: BoxDecoration(
+                  color: Color(0xffffffff),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0.00, 3.00),
+                      color: Color(0xff000000).withOpacity(0.16),
+                      blurRadius: 6,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(30.00),
+                ),
                 child: TextField(
                   decoration: InputDecoration(
                       hintStyle: Theme.of(context).textTheme.headline3,
@@ -150,7 +146,6 @@ class LoginCard extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                   keyboardAppearance: Brightness.dark,
                 ),
-              
               )
             ],
           ),
@@ -158,7 +153,13 @@ class LoginCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PhoneVerificationPage()),
+                  );
+                },
                 child: Text(
                   'Forget Password?',
                   style: TextStyle(
@@ -183,7 +184,12 @@ class LoginCard extends StatelessWidget {
               ),
               child: Text("Login", style: Theme.of(context).textTheme.button),
               color: Theme.of(context).accentColor,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
             ),
           ),
           Padding(
@@ -191,34 +197,37 @@ class LoginCard extends StatelessWidget {
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              right: (mediaQuery.size.width - mediaQuery.padding.right) * 0.05,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "Don't have account? ",
-                  style: TextStyle(color: Colors.grey),
-                ),
-                Text(
-                  "Register now !",
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Don't have account?",
+                style: TextStyle(color: Colors.grey),
+              ),
+              FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegestrationPage()),
+                  );
+                },
+                child: Text(
+                  'Register now !',
                   style: TextStyle(
                     decoration: TextDecoration.underline,
                     color: Theme.of(context).accentColor,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           Padding(
             padding: EdgeInsets.only(
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
             ),
           ),
-          Text('OR',
-             style: TextStyle(color: Colors.grey)),
+          Text('OR', style: TextStyle(color: Colors.grey)),
           Padding(
             padding: EdgeInsets.only(
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.015,
