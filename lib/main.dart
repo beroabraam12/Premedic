@@ -86,7 +86,11 @@ class MyApp extends StatelessWidget {
             fontSize: 21,
             fontWeight: FontWeight.bold,
             color: Colors.black87,
-          )
+          ),
+          headline3: TextStyle(
+            fontSize: 16,
+            color: Colors.grey[600],
+          ),
         ),
         iconTheme: IconThemeData(
           size: 30,
@@ -97,7 +101,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       
-    
       routes:{
         '/': (BuildContext ctx) => LoginPage(),
         RegestrationPage.routeName: (BuildContext ctx)=>RegestrationPage(),
