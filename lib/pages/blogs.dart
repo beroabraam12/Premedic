@@ -53,7 +53,7 @@ class _BlogsPageState extends State<BlogsPage> {
                   children: <Widget>[
                     Text(
                       'Blogs',
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     Padding(
                         padding: EdgeInsets.only(

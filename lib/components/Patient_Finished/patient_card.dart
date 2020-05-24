@@ -96,7 +96,7 @@ class _PatientCardsState extends State<PatientCards> {
                                                         .doctorName,
                                                     style: Theme.of(context)
                                                         .textTheme
-                                                        .title,
+                                                        .headline6,
                                                     maxLines: 3,
                                                   ),
                                                   Container(
@@ -108,7 +108,7 @@ class _PatientCardsState extends State<PatientCards> {
                                                           .subTitle,
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .subtitle,
+                                                          .subtitle2,
                                                       maxLines: 5,
                                                     ),
                                                   ),
@@ -187,7 +187,7 @@ class _PatientCardsState extends State<PatientCards> {
                                                             style: Theme.of(
                                                                     context)
                                                                 .textTheme
-                                                                .display1,
+                                                                .headline4,
                                                           ),
                                                           Text(
                                                             patientCardList[
@@ -197,7 +197,7 @@ class _PatientCardsState extends State<PatientCards> {
                                                             style: Theme.of(
                                                                     context)
                                                                 .textTheme
-                                                                .subtitle,
+                                                                .subtitle2,
                                                             maxLines: 3,
                                                           ),
                                                         ],
@@ -286,7 +286,7 @@ class _PatientCardsState extends State<PatientCards> {
                                             'Rate This Perceptions',
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle,
+                                                .subtitle2,
                                           ),
                                           Text(
                                             'Your rate is very important to us\nimprove the quality of listed doctor',
@@ -354,14 +354,14 @@ class _PatientCardsState extends State<PatientCards> {
                                             patientCardList[index].doctorName,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .title,
+                                                .headline6,
                                             maxLines: 3,
                                           ),
                                           Text(
                                             patientCardList[index].subTitle,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle,
+                                                .subtitle2,
                                             maxLines: 3,
                                           ),
                                         ],
@@ -426,7 +426,7 @@ class _PatientCardsState extends State<PatientCards> {
                                                   patientCardList[index].start,
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .body1),
+                                                  .bodyText2),
                                         ],
                                       ),
                                       Row(
@@ -440,7 +440,7 @@ class _PatientCardsState extends State<PatientCards> {
                                                   patientCardList[index].finish,
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .body1),
+                                                  .bodyText2),
                                         ],
                                       ),
                                     ],

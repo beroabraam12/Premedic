@@ -72,7 +72,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                                         .title,
                                                     style: Theme.of(context)
                                                         .textTheme
-                                                        .title,
+                                                        .headline6,
                                                   ),
                                                   Text(
                                                     hospitalCardList[index]
@@ -81,7 +81,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                                     maxLines: 3,
                                                     style: Theme.of(context)
                                                         .textTheme
-                                                        .body1,
+                                                        .bodyText2,
                                                   ),
                                                 ],
                                               ),
@@ -135,7 +135,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                                 'Perceptions Rating : $_rating',
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .body1,
+                                                    .bodyText2,
                                               ),
                                             ],
                                           ),
@@ -263,7 +263,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                             hospitalCardList[index].title,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .title,
+                                                .headline6,
                                           ),
                                           Text(
                                             hospitalCardList[index].subtitle,
@@ -271,7 +271,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                             maxLines: 3,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .body1,
+                                                .bodyText2,
                                           ),
                                         ],
                                       )
@@ -306,7 +306,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                     Text(
                                       'Rating : $_rating',
                                       style:
-                                          Theme.of(context).textTheme.body1,
+                                          Theme.of(context).textTheme.bodyText2,
                                     ),
                                   ],
                                 ),

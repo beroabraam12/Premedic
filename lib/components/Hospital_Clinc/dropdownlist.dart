@@ -53,7 +53,7 @@ class _DropdownState extends State<Dropdown> {
                            Icon(
                             value.icon,
                           ),
-                           Text(value.name,style: Theme.of(context).textTheme.body1,)
+                           Text(value.name,style: Theme.of(context).textTheme.bodyText2,)
                         ],
                       ),
                     );

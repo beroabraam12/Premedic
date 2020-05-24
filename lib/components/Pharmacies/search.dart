@@ -20,7 +20,7 @@ class _SearchPharmacyState extends State<SearchPharmacy> {
           )),
       child: TextField(
         decoration: InputDecoration(
-            hintStyle: Theme.of(context).textTheme.subtitle,
+            hintStyle: Theme.of(context).textTheme.subtitle2,
             hintText: 'Search',
             prefixIcon:
                 Icon(Icons.search, color: Theme.of(context).iconTheme.color),

@@ -3,7 +3,7 @@ import 'package:premedic/components/customIcons/custom_icon_icons.dart';
 
 class HomePage extends StatefulWidget {
   
- // static final routeName = '/';
+  static final routeName = '/home';
   @override
   _HomePageState createState() => _HomePageState();
 }

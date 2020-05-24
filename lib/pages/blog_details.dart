@@ -88,7 +88,7 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                               ),
                               child: Text(
                                 blogDetailModel[index].blogSubtitle,
-                                style: Theme.of(context).textTheme.subtitle,
+                                style: Theme.of(context).textTheme.subtitle2,
                               ),
                             ),
                             Padding(
@@ -125,7 +125,7 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                                         'Author: ' +
                                             blogDetailModel[index].authorName,
                                         style:
-                                            Theme.of(context).textTheme.body1),
+                                            Theme.of(context).textTheme.bodyText2),
                                   ],
                                 ),
                                 Row(
@@ -135,7 +135,7 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                                         color: Theme.of(context).accentColor),
                                     Text(blogDetailModel[index].blogTime,
                                         style:
-                                            Theme.of(context).textTheme.body1),
+                                            Theme.of(context).textTheme.bodyText2),
                                   ],
                                 ),
                               ],
@@ -152,7 +152,7 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                               size: 70,
                             ),
                             Text(blogDetailModel[index].blogLoveCount,
-                                style: Theme.of(context).textTheme.body1),
+                                style: Theme.of(context).textTheme.bodyText2),
                             Padding(
                                 padding: EdgeInsets.only(
                               top: (mediaquery.size.height -

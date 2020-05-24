@@ -53,7 +53,7 @@ class _HospitalsClinicsPageState extends State<HospitalsClinicsPage> {
                   children: <Widget>[
                     Text(
                       'Hospitals & Clinics',
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     Padding(
                         padding: EdgeInsets.only(

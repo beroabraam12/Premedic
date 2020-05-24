@@ -53,7 +53,7 @@ class _DropdownPharmacyState extends State<DropdownPharmacy> {
                            Icon(
                             value.icon,
                           ),
-                           Text(value.name,style: Theme.of(context).textTheme.subtitle)
+                           Text(value.name,style: Theme.of(context).textTheme.subtitle2)
                         ],
                       ),
                     );

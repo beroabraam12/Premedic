@@ -63,7 +63,7 @@ class _PharmaciesPageState extends State<PharmaciesPage> {
                   children: <Widget>[
                     Text(
                       'Pharmacies',
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     Padding(
                         padding: EdgeInsets.only(

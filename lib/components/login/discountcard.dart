@@ -234,7 +234,8 @@ SignInButton(
  */
 
 import 'package:flutter/material.dart';
-//import 'package:flutter_signin_button/flutter_signin_button.dart';
+
+import 'package:premedic/pages/home.dart';
 
 
 class DiscountCard extends StatelessWidget {
@@ -255,10 +256,11 @@ class DiscountCard extends StatelessWidget {
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.04,
             ),
           ),
-          Center(
-            child: Container(
-              height: mediaQuery.size.height*0.05,
-              child: Image(image: AssetImage('assets/Logo.png')),
+          Container(
+            height: mediaQuery.size.height*0.1,
+            child: Image(
+              image: AssetImage('assets/Logo.png',
+              ),
             ),
           ),
           Padding(
@@ -399,7 +401,13 @@ class DiscountCard extends StatelessWidget {
                     //style: Theme.of(context).textTheme.title,
                     style: TextStyle(color: Colors.white)),
                 color: Theme.of(context).accentColor,
-                onPressed: () {},
+                onPressed: () {
+                   Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HomePage()),
+                      ); 
+                },
               ),
             ),
           ),

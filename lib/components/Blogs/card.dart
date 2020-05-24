@@ -66,7 +66,7 @@ class _BlogCardState extends State<BlogCard> {
                     ),
                     child: Text(
                       blogModelCardList[index].blogTitle,
-                      style: Theme.of(context).textTheme.subhead,
+                      style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
                   Padding(
@@ -94,7 +94,7 @@ class _BlogCardState extends State<BlogCard> {
                             Text(
                                 'Author: ' +
                                     blogModelCardList[index].authorName,
-                                style: Theme.of(context).textTheme.body1),
+                                style: Theme.of(context).textTheme.bodyText2),
                           ],
                         ),
                         Row(
@@ -102,7 +102,7 @@ class _BlogCardState extends State<BlogCard> {
                             Icon(Icons.access_time,
                                 size: 20, color: Theme.of(context).accentColor),
                             Text(blogModelCardList[index].blogTime,
-                                style: Theme.of(context).textTheme.body1),
+                                style: Theme.of(context).textTheme.bodyText2),
                           ],
                         ),
                       ],

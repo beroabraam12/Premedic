@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import './pages/home.dart';
 import './pages/blog_details.dart';
 import './pages/hospital_clinc.dart';
 import './pages/login.dart';
@@ -26,12 +27,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: TextTheme(
-          headline: TextStyle(
+          headline5: TextStyle(
             color: Colors.black,
             fontSize:20,
             letterSpacing: 12.9,
           ),
-          title: TextStyle(
+          headline6: TextStyle(
             color: Colors.black87,
             fontSize: 25,
             letterSpacing: 0.5
@@ -40,26 +41,26 @@ class MyApp extends StatelessWidget {
             color:Color(0x60000000),
             fontSize:12,
           ),
-          body1: TextStyle(
+          bodyText2: TextStyle(
             fontSize: 16,
             color: Colors.black,
             letterSpacing: 0.5,
           ),
-          body2:  TextStyle(
+          bodyText1:  TextStyle(
             fontSize: 14,
             color: Colors.black54,
             letterSpacing: 0.25,
           ),
-          display4: TextStyle(
+          headline1: TextStyle(
             fontSize: 24,
             color:Colors.black,
           ),
-          display3: TextStyle(
+          headline2: TextStyle(
             fontSize:20,
             color:Colors.black,
             letterSpacing: 0.25
           ),
-          subtitle:  TextStyle(
+          subtitle2:  TextStyle(
             fontSize: 16,
             color: Colors.black,
             letterSpacing: 0.15,
@@ -75,13 +76,13 @@ class MyApp extends StatelessWidget {
             color: Colors.grey[300],
             letterSpacing: 2,
           ),
-          subhead: TextStyle(
+          subtitle1: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
             color: Colors.black87,
             letterSpacing: 1,
           ),
-          display1: TextStyle(
+          headline4: TextStyle(
             fontSize: 21,
             fontWeight: FontWeight.bold,
             color: Colors.black87,
@@ -98,6 +99,7 @@ class MyApp extends StatelessWidget {
       
     
       routes:{
+        '/': (BuildContext ctx) => LoginPage(),
         RegestrationPage.routeName: (BuildContext ctx)=>RegestrationPage(),
         PhoneVerificationPage.routeName: (BuildContext ctx)=>PhoneVerificationPage(),
         LoginPage.routeName: (BuildContext ctx)=>LoginPage(),
@@ -107,6 +109,7 @@ class MyApp extends StatelessWidget {
         BlogsPage.routeName:(BuildContext context) => BlogsPage(),
         BlogDetailsPage.routeName:(BuildContext context) => BlogDetailsPage(),
         PatientProfilePage.routeName:(BuildContext context) => PatientProfilePage(),
+        HomePage.routeName:(BuildContext context) => HomePage(),
       }
     );
   }
