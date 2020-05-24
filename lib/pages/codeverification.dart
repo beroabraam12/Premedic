@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../components/VerificatuionCode/verificationcard.dart';
 
-
 class CodeVerificationPage extends StatefulWidget {
   static final routeName = '/PhoneVerificationCode';
   @override
@@ -14,6 +13,7 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Container(
         decoration: new BoxDecoration(
           image: new DecorationImage(
@@ -21,70 +21,51 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
             fit: BoxFit.cover,
           ),
         ),
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {},
+            Padding(
+              padding: EdgeInsets.only(
+                top: (mediaQuery.size.height-mediaQuery.padding.top)*0.08,
+                left: (mediaQuery.size.width-mediaQuery.padding.left)*0.05,
+              ),
+              child: IconButton(
+                icon: Icon(Icons.arrow_back,color: Colors.white,size: Theme.of(context).iconTheme.size),
+                onPressed: () {},
+              ),
+            ),
+            Padding(padding: EdgeInsets.only(
+              top: (mediaQuery.size.height-mediaQuery.padding.top)*0.03
+            )),
+            Center(
+              child: Column(
+                children: <Widget>[
+                  Text("Verification Code",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                  )),
+                  Padding(padding: EdgeInsets.only(
+              top: (mediaQuery.size.height-mediaQuery.padding.top)*0.01
+            )),
+              Text(
+                "    We will send a verification code\nwithin 2 minutes to verify your number",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
                 ),
+              ),
+                ],
+              ),
+            ),
             Container(
               width: mediaQuery.size.width,
               margin: EdgeInsets.symmetric(
-               
                 vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.02,
+                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.05,
               ),
-              child: Center(
-                child: 
-                Text(
-                  "Verification Code",
-                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30.0,)
-                ),
-              ),
-            ),
-          Container(
-             
-              child: Center(
-                child: Text(
-                  "We will send Verification Code ",
-                    style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0,
-            ),
-                ),
-              ),),
-              Container(
-             
-              child: Center(
-                child: Text(
-                  "with in 2 minutes to verify you number",
-                    style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0,
-            ),
-                ),
-              ),
-            ),
-             Container(
-             width: mediaQuery.size.width,
-              margin: EdgeInsets.symmetric(
-               
-                vertical:
-                    (mediaQuery.size.height - mediaQuery.padding.top) * 0.15,
-              ),
-              decoration: new BoxDecoration(boxShadow: [
-                new BoxShadow(
-                 
-                  blurRadius: 20.0,
-                ),
-              ]),
-              child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraint) {
-                  return VerificationCard(constraint);
-                },
-              ),
+              child: VerificationCard(),
             ),
           ],
         ),

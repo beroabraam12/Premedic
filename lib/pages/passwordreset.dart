@@ -3,13 +3,12 @@ import 'package:premedic/components/PasswordReset/passwordreset.dart';
 
 
 class PasswordResetPage extends StatefulWidget {
+  static final routeName = '/PasswordReset';
   @override
   _PasswordResetPageState createState() => _PasswordResetPageState();
 }
 
 class _PasswordResetPageState extends State<PasswordResetPage> {
-  get decoration => null;
-
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import './pages/passwordreset.dart';
 import './pages/codeverification.dart';
 import './pages/home.dart';
 import './pages/blog_details.dart';
@@ -115,6 +116,7 @@ class MyApp extends StatelessWidget {
         PatientProfilePage.routeName:(BuildContext context) => PatientProfilePage(),
         HomePage.routeName:(BuildContext context) => HomePage(),
         CodeVerificationPage.routeName:(BuildContext context) => CodeVerificationPage(),
+        PasswordResetPage.routeName:(BuildContext context) => PasswordResetPage(),
       }
     );
   }
