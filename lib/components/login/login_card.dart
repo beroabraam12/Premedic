@@ -199,7 +199,6 @@ class LoginCard extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
                 "Don't have account?",

@@ -27,35 +27,51 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                top: (mediaQuery.size.height-mediaQuery.padding.top)*0.08,
-                left: (mediaQuery.size.width-mediaQuery.padding.left)*0.05,
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
+                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.05,
               ),
               child: IconButton(
-                icon: Icon(Icons.arrow_back,color: Colors.white,size: Theme.of(context).iconTheme.size),
+                icon: Icon(Icons.arrow_back,
+                    color: Colors.white,
+                    size: Theme.of(context).iconTheme.size),
                 onPressed: () {},
               ),
             ),
-            Padding(padding: EdgeInsets.only(
-              top: (mediaQuery.size.height-mediaQuery.padding.top)*0.03
-            )),
+            Padding(
+                padding: EdgeInsets.only(
+                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.03)),
             Center(
               child: Column(
                 children: <Widget>[
                   Text("Verification Code",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                  )),
-                  Padding(padding: EdgeInsets.only(
-              top: (mediaQuery.size.height-mediaQuery.padding.top)*0.01
-            )),
-              Text(
-                "    We will send a verification code\nwithin 2 minutes to verify your number",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                ),
-              ),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                      )),
+                  Padding(
+                      padding: EdgeInsets.only(
+                          top: (mediaQuery.size.height -
+                                  mediaQuery.padding.top) *
+                              0.01)),
+                  Center(
+                    child: Text(
+                      "We will send a verification code",
+                      style: TextStyle(
+                        color: Colors.grey[200],
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "within 2 minutes to verify your number",
+                      style: TextStyle(
+                        color: Colors.grey[200],
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
