@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+
 import 'package:premedic/components/RegisterCard/registercard.dart';
 
 class RegestrationPage extends StatefulWidget {
-   static final routeName = '/RegistrationPage';
+  static final routeName = '/RegistrationPage';
   @override
   _RegestrationPage createState() => _RegestrationPage();
 }
 
 class _RegestrationPage extends State<RegestrationPage> {
-  get decoration => null;
-
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Container(
+        width: mediaQuery.size.width,
+        height: mediaQuery.size.height,
         decoration: new BoxDecoration(
           image: new DecorationImage(
             image: AssetImage("assets/background-01.png"),
@@ -25,35 +27,29 @@ class _RegestrationPage extends State<RegestrationPage> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.07,
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
               ),
             ),
-            Container(
-              height: mediaQuery.size.height*0.05,
-              width: mediaQuery.size.width,
-              margin: EdgeInsets.symmetric(),
-              child: Center(
-                child: Text("Regestration",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30.0,
-                    )),
-              ),
+            Center(
+              child: Text("Register",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30.0,
+                  )),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              padding: EdgeInsets.only(
+                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.03,
+                right:
+                    (mediaQuery.size.width - mediaQuery.padding.right) * 0.03,
+              ),
               child: Container(
                 width: mediaQuery.size.width,
                 margin: EdgeInsets.symmetric(
                   vertical:
-                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.05,
+                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
                 ),
-                
-                child: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraint) {
-                    return RegisterCard(constraint);
-                  },
-                ),
+                child: RegisterCard(),
               ),
             ),
           ],
