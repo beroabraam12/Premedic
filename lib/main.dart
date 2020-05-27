@@ -104,7 +104,7 @@ class MyApp extends StatelessWidget {
       ),
       
       routes:{
-        '/': (BuildContext context) => LoginPage(),
+       '/': (BuildContext context) => LoginPage(),
         RegestrationPage.routeName: (BuildContext context)=> RegestrationPage(),
         PhoneVerificationPage.routeName: (BuildContext context)=> PhoneVerificationPage(),
         LoginPage.routeName: (BuildContext context)=> LoginPage(),

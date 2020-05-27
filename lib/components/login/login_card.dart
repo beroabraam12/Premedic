@@ -204,14 +204,19 @@ class LoginCard extends StatelessWidget {
                 "Don't have account?",
                 style: TextStyle(color: Colors.grey),
               ),
-              FlatButton(
-                onPressed: () {
+              Padding(
+            padding: EdgeInsets.only(
+              right: (mediaQuery.size.width - mediaQuery.padding.right) * 0.01,
+            ),
+          ),
+              GestureDetector(
+                onTap: (){
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => RegestrationPage()),
                   );
                 },
-                child: Text(
+                  child: Text(
                   'Register now !',
                   style: TextStyle(
                     decoration: TextDecoration.underline,

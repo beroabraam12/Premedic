@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:premedic/components/customIcons/custom_icon_icons.dart';
 
+import './patient.dart';
+import './hospital_clinc.dart';
+import './pharmacies.dart';
+import './blogs.dart';
+
 class HomePage extends StatefulWidget {
-  
   static final routeName = '/home';
   @override
   _HomePageState createState() => _HomePageState();
@@ -12,292 +16,306 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          Container(
-           height: mediaQuery.size.height * 0.47,
-            width: mediaQuery.size.width,
-            decoration: BoxDecoration(
-              color: Color(0xff31a6c3),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(150.00),
-                bottomRight: Radius.circular(130.00),
-              ),
-            ),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                        0.05,
-                  ),
+      body: Container(
+        height: mediaQuery.size.height,
+        width: mediaQuery.size.width,
+        child: ListView(
+          children: <Widget>[
+            Container(
+              height: mediaQuery.size.height * 0.5,
+              width: mediaQuery.size.width,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(150),
+                  bottomRight: Radius.circular(150),
                 ),
-                Container(
-                    height: mediaQuery.size.height * 0.10,
-                  width: mediaQuery.size.width,
-                  margin: EdgeInsets.symmetric(),
-                  child: Center(
+              ),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                          0.08,
+                    ),
+                  ),
+                  Center(
                     child: Text("Check Medicine Details",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 30.0,
+                          fontSize: 30,
                         )),
                   ),
-                ),
-                Container(
-                  width: mediaQuery.size.width,
-                  margin: EdgeInsets.symmetric(),
-                  child: Center(
-                    child: Text("Enter the medicine name",
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                          0.01,
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                        "Enter the medicine name\nor scan it using barcode",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
                         )),
                   ),
-                ),
-                Container(
-                  width: mediaQuery.size.width,
-                  margin: EdgeInsets.symmetric(),
-                  child: Center(
-                    child: Text("or scan it using barcode",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                        )),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                          0.05,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                        0.05,
+                  Container(
+                    width: (mediaQuery.size.width -
+                            mediaQuery.padding.horizontal) *
+                        0.7,
+                    height: mediaQuery.size.height * 0.07,
+                    decoration: BoxDecoration(
+                      color: Color(0xffffffff),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0.00, 3.00),
+                          color: Color(0xff000000).withOpacity(0.16),
+                          blurRadius: 6,
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(30.00),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintStyle: Theme.of(context).textTheme.headline3,
+                          hintText: 'Enter Medicine name',
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: (mediaQuery.size.width -
+                                    mediaQuery.padding.horizontal) *
+                                0.05,
+                            vertical: (mediaQuery.size.height -
+                                    mediaQuery.padding.vertical) *
+                                0.025,
+                          )),
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(fontSize: 18),
+                    ),
                   ),
-                ),
-                Container(
-                  height: 48.00,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    color: Color(0xffffffff),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0.00, 3.00),
-                        color: Color(0xff000000).withOpacity(0.16),
-                        blurRadius: 6,
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                          0.05,
+                    ),
+                  ),
+                  Container(
+                    width: 70,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).accentColor,
+                    ),
+                    child: Icon(
+                      CustomIcon.barcode,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.04,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.05,
+                right:
+                    (mediaQuery.size.width - mediaQuery.padding.right) * 0.05,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PatientPage()),
+                      );
+                    },
+                    child: Container(
+                      height: mediaQuery.size.height * 0.2,
+                      width: mediaQuery.size.width * 0.4,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(50.00),
                       ),
-                    ],
-                    borderRadius: BorderRadius.circular(30.00),
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: Colors.grey, width: 0.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image(image: AssetImage('assets/information.png')),
+                          Padding(
+                              padding: EdgeInsets.only(
+                            top: (mediaQuery.size.height -
+                                    mediaQuery.padding.top) *
+                                0.01,
+                          )),
+                          Text("Medical Profile"),
+                        ],
                       ),
-                      border: const OutlineInputBorder(),
-                      hintText: "Enter Medicine name ",
-                      hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                        0.05,
-                  ),
-                ),
-                Container(
-                  width: 70.0,
-                  height: 70.0,
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Theme.of(context).accentColor,
-                  ),
-                  child: Icon(
-                    CustomIcon.barcode,
-                    color: Colors.white,
-                    size: Theme.of(context).iconTheme.size,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.04,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0),
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                   height: mediaQuery.size.height * 0.18,
-                    width: 146.00,
-                    decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0.00, 3.00),
-                          color: Color(0xff000000).withOpacity(0.16),
-                          blurRadius: 6,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(50.00),
+                  Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: (mediaQuery.size.width -
+                                  mediaQuery.padding.horizontal) *
+                              0.02)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HospitalsClinicsPage()),
+                      );
+                    },
+                    child: Container(
+                      height: mediaQuery.size.height * 0.2,
+                      width: mediaQuery.size.width * 0.45,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(50.00),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image(image: AssetImage('assets/doctor.png')),
+                          Padding(
+                              padding: EdgeInsets.only(
+                            top: (mediaQuery.size.height -
+                                    mediaQuery.padding.top) *
+                                0.01,
+                          )),
+                          Text(
+                            "Hospitals & Clinics",
+                          ),
+                        ],
+                      ),
                     ),
-                     child: Column(
-              children: <Widget>[
-                Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.04,
-            ),
-          ),
-                 Center(
-            child: Container(
-              child: Image(image: AssetImage('assets/information.png')),
-            ),
-          ),
-           Center(
-            child: Container(
-              child: Text("Medical Profile"),
-            ),
-          ),
-
-                
-                ],),)),
-
-                  
-                
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                    height: mediaQuery.size.height * 0.18,
-                    width: 146.00,
-                    decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0.00, 3.00),
-                          color: Color(0xff000000).withOpacity(0.16),
-                          blurRadius: 6,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(50.00),
-                    ),
-                    child: Column(
-              children: <Widget>[
-                Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.04,
-            ),
-          ),
-                 Center(
-            child: Container(
-              child: Image(image: AssetImage('assets/doctor.png')),
-            ),
-          ),
-           Center(
-            child: Container(
-              child: Text("Hospitals & Clinics",),
-            
-            ),
-          ),
-
-                
-                ],),
                   ),
-
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0),
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                    height: mediaQuery.size.height * 0.18,
-                    width: 146.00,
-                    decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0.00, 3.00),
-                          color: Color(0xff000000).withOpacity(0.16),
-                          blurRadius: 6,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(50.00),
+            Padding(
+                padding: EdgeInsets.only(
+              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.02,
+            )),
+            Padding(
+              padding: EdgeInsets.only(
+                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.05,
+                right:
+                    (mediaQuery.size.width - mediaQuery.padding.right) * 0.05,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PharmaciesPage()),
+                      );
+                    },
+                    child: Container(
+                      height: mediaQuery.size.height * 0.18,
+                      width: mediaQuery.size.width * 0.4,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image(image: AssetImage('assets/pharmacy.png')),
+                          Padding(
+                              padding: EdgeInsets.only(
+                            top: (mediaQuery.size.height -
+                                    mediaQuery.padding.top) *
+                                0.01,
+                          )),
+                          Text("Pharmcies"),
+                        ],
+                      ),
                     ),
-                    child: Column(
-              children: <Widget>[
-                Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.04,
-            ),
-          ),
-                 Center(
-            child: Container(
-              child: Image(image: AssetImage('assets/pharmacy.png')),
-            ),
-          ),
-           Center(
-            child: Container(
-              child: Text("Pharmcies"),
-            ),
-          ),
-
-                
-                ],),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                     height: mediaQuery.size.height * 0.18,
-                    width: 146.00,
-                    decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0.00, 3.00),
-                          color: Color(0xff000000).withOpacity(0.16),
-                          blurRadius: 6,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(50.00),
+                  Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: (mediaQuery.size.width -
+                                  mediaQuery.padding.horizontal) *
+                              0.03)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BlogsPage()),
+                      );
+                    },
+                    child: Container(
+                      height: mediaQuery.size.height * 0.18,
+                      width: mediaQuery.size.width * 0.4,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(50.00),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image(image: AssetImage('assets/pharm.png')),
+                          Padding(
+                              padding: EdgeInsets.only(
+                            top: (mediaQuery.size.height -
+                                    mediaQuery.padding.top) *
+                                0.01,
+                          )),
+                          Text("Medical Blogs"),
+                        ],
+                      ),
                     ),
-                    child: Column(
-              children: <Widget>[
-                Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.04,
-            ),
-          ),
-                 Center(
-            child: Container(
-              child: Image(image: AssetImage('assets/pharm.png')),
-            ),
-          ),
-           Center(
-            child: Container(
-              child: Text("Medical Blogs"),
-            ),
-          ),
-
-                
-                ],),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
