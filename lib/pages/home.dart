@@ -13,10 +13,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Drawer(),
       body: Container(
         height: mediaQuery.size.height,
         width: mediaQuery.size.width,
@@ -33,11 +36,28 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
                       top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                          0.08,
+                          0.02,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: (mediaQuery.size.width - mediaQuery.padding.left) *
+                          0.03,
+                    ),
+                    child: IconButton(icon: Icon(Icons.menu,size: 30,color: Colors.white,), onPressed: (){
+                      _scaffoldKey.currentState.openDrawer();
+                    }),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                          0.02,
                     ),
                   ),
                   Center(
@@ -67,37 +87,39 @@ class _HomePageState extends State<HomePage> {
                           0.05,
                     ),
                   ),
-                  Container(
-                    width: (mediaQuery.size.width -
-                            mediaQuery.padding.horizontal) *
-                        0.7,
-                    height: mediaQuery.size.height * 0.07,
-                    decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0.00, 3.00),
-                          color: Color(0xff000000).withOpacity(0.16),
-                          blurRadius: 6,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(30.00),
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintStyle: Theme.of(context).textTheme.headline3,
-                          hintText: 'Enter Medicine name',
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: (mediaQuery.size.width -
-                                    mediaQuery.padding.horizontal) *
-                                0.05,
-                            vertical: (mediaQuery.size.height -
-                                    mediaQuery.padding.vertical) *
-                                0.025,
-                          )),
-                      keyboardType: TextInputType.text,
-                      style: TextStyle(fontSize: 18),
+                  Center(
+                    child: Container(
+                      width: (mediaQuery.size.width -
+                              mediaQuery.padding.horizontal) *
+                          0.7,
+                      height: mediaQuery.size.height * 0.07,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(30.00),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintStyle: Theme.of(context).textTheme.headline3,
+                            hintText: 'Enter Medicine name',
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: (mediaQuery.size.width -
+                                      mediaQuery.padding.horizontal) *
+                                  0.05,
+                              vertical: (mediaQuery.size.height -
+                                      mediaQuery.padding.vertical) *
+                                  0.025,
+                            )),
+                        keyboardType: TextInputType.text,
+                        style: TextStyle(fontSize: 18),
+                      ),
                     ),
                   ),
                   Padding(
@@ -106,17 +128,19 @@ class _HomePageState extends State<HomePage> {
                           0.05,
                     ),
                   ),
-                  Container(
-                    width: 70,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).accentColor,
-                    ),
-                    child: Icon(
-                      CustomIcon.barcode,
-                      color: Colors.white,
-                      size: 30,
+                  Center(
+                    child: Container(
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      child: Icon(
+                        CustomIcon.barcode,
+                        color: Colors.white,
+                        size: 30,
+                      ),
                     ),
                   )
                 ],
