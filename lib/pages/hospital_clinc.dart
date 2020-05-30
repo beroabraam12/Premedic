@@ -4,6 +4,7 @@ import '../components/Hospital_Clinc/filter.dart';
 import '../components/Hospital_Clinc/dropdownlist.dart';
 import '../components/Hospital_Clinc/search.dart';
 import '../components/Hospital_Clinc/hosptial_clinc_card.dart';
+import '../pages/home.dart';
 
 class HospitalsClinicsPage extends StatefulWidget {
   static final routeName = "/hospitals-clinc";
@@ -35,12 +36,20 @@ class _HospitalsClinicsPageState extends State<HospitalsClinicsPage> {
                       padding: EdgeInsets.only(
                         left:
                             (mediaquery.size.width - mediaquery.padding.left) *
-                                0.07,
+                                0.03,
                       ),
                     ),
-                    Icon(
-                      Icons.arrow_back,
-                    ),
+                    IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: Theme.of(context).iconTheme.size,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        })
                   ],
                 ),
                 Padding(

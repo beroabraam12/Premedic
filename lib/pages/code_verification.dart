@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../components/VerificatuionCode/verificationcard.dart';
+import '../components/Verification-Code/verificationcard.dart';
+import '../pages/phone_verification.dart';
 
 class CodeVerificationPage extends StatefulWidget {
   static final routeName = '/PhoneVerificationCode';
@@ -27,14 +28,20 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
-                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.05,
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.07,
+                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.03,
               ),
               child: IconButton(
                 icon: Icon(Icons.arrow_back,
                     color: Colors.white,
                     size: Theme.of(context).iconTheme.size),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PhoneVerificationPage()),
+                  );
+                },
               ),
             ),
             Padding(

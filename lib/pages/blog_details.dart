@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:premedic/models/blog_detail_model.dart';
+import '../models/blog_detail_model.dart';
+import '../pages/blogs.dart';
 
 class BlogDetailsPage extends StatefulWidget {
   static final routeName = "/blogs-details";
@@ -46,19 +47,27 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Padding(
-                                    padding: EdgeInsets.only(
-                                      top: (mediaquery.size.height -
-                                              mediaquery.padding.top) *
-                                          0.04,
-                                      left: (mediaquery.size.width -
-                                              mediaquery.padding.left) *
-                                          0.05,
-                                    ),
-                                    child: Icon(
-                                      Icons.arrow_back,
-                                      color: Colors.white,
-                                    ),
-                                  ),
+                                      padding: EdgeInsets.only(
+                                        top: (mediaquery.size.height -
+                                                mediaquery.padding.top) *
+                                            0.02,
+                                        left: (mediaquery.size.width -
+                                                mediaquery.padding.left) *
+                                            0.02,
+                                      ),
+                                      child: IconButton(
+                                          icon: Icon(Icons.arrow_back,
+                                              size: Theme.of(context)
+                                                  .iconTheme
+                                                  .size,
+                                              color: Colors.white),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        BlogsPage()));
+                                          })),
                                   Padding(
                                     padding: EdgeInsets.only(
                                         top: (mediaquery.size.height -
@@ -124,8 +133,9 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                                     Text(
                                         'Author: ' +
                                             blogDetailModel[index].authorName,
-                                        style:
-                                            Theme.of(context).textTheme.bodyText2),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2),
                                   ],
                                 ),
                                 Row(
@@ -134,8 +144,9 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                                         size: 20,
                                         color: Theme.of(context).accentColor),
                                     Text(blogDetailModel[index].blogTime,
-                                        style:
-                                            Theme.of(context).textTheme.bodyText2),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2),
                                   ],
                                 ),
                               ],

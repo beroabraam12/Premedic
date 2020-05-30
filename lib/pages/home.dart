@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/components/customIcons/custom_icon_icons.dart';
 
-import './patient.dart';
+import '../components/customIcons/custom_icon_icons.dart';
+import './medical_profile.dart';
 import './hospital_clinc.dart';
 import './pharmacies.dart';
 import './blogs.dart';
@@ -50,9 +50,15 @@ class _HomePageState extends State<HomePage> {
                       left: (mediaQuery.size.width - mediaQuery.padding.left) *
                           0.03,
                     ),
-                    child: IconButton(icon: Icon(Icons.menu,size: 30,color: Colors.white,), onPressed: (){
-                      _scaffoldKey.currentState.openDrawer();
-                    }),
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.menu,
+                          size: 30,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          _scaffoldKey.currentState.openDrawer();
+                        }),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
@@ -164,7 +170,8 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PatientPage()),
+                        MaterialPageRoute(
+                            builder: (context) => MedicalProfilePage()),
                       );
                     },
                     child: Container(
@@ -253,6 +260,8 @@ class _HomePageState extends State<HomePage> {
                 left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.05,
                 right:
                     (mediaQuery.size.width - mediaQuery.padding.right) * 0.05,
+                bottom:
+                    (mediaQuery.size.height - mediaQuery.padding.bottom) * 0.03,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

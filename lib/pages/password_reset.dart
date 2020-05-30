@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:premedic/components/PasswordReset/passwordreset.dart';
+import '../components/PasswordReset/passwordreset.dart';
+import '../pages/code_verification.dart';
 
 class PasswordResetPage extends StatefulWidget {
   static final routeName = '/PasswordReset';
@@ -29,7 +30,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                  top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
+                  top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.07,
                   left:
                       (mediaQuery.size.width - mediaQuery.padding.left) * 0.03),
               child: IconButton(
@@ -38,7 +39,13 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                   size: Theme.of(context).iconTheme.size,
                   color: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeVerificationPage()),
+                  );
+                },
               ),
             ),
             Padding(

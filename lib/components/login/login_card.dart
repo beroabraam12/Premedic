@@ -3,7 +3,7 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 import 'package:premedic/pages/home.dart';
 import 'package:premedic/pages/regestration.dart';
-import 'package:premedic/pages/phoneverification.dart';
+import 'package:premedic/pages/phone_verification.dart';
 
 class LoginCard extends StatelessWidget {
   @override
@@ -217,7 +217,7 @@ class LoginCard extends StatelessWidget {
                   );
                 },
                   child: Text(
-                  'Register now !',
+                  'Register now!',
                   style: TextStyle(
                     decoration: TextDecoration.underline,
                     color: Theme.of(context).accentColor,

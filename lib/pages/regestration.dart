@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:premedic/components/RegisterCard/registercard.dart';
+import '../components/Register/registercard.dart';
 
 class RegestrationPage extends StatefulWidget {
   static final routeName = '/RegistrationPage';

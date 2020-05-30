@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/components/VerificatuionPhone/verificationphone.dart';
+
+import '../components/Verification-Phone/verificationphone.dart';
+import '../pages/login.dart';
 
 class PhoneVerificationPage extends StatefulWidget {
   static final routeName = '/PhoneVerification';
@@ -28,14 +30,19 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                top: (mediaQuery.size.height - mediaQuery.padding.top)*0.07,
-                left: (mediaQuery.size.width - mediaQuery.padding.left)*0.03,
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.07,
+                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.03,
               ),
               child: IconButton(
                 icon: Icon(Icons.arrow_back),
                 color: Colors.white,
                 iconSize: Theme.of(context).iconTheme.size,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
               ),
             ),
             Padding(
@@ -46,10 +53,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
             Center(
               child: Text(
                 "Phone Verification ",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 30),
               ),
             ),
             Padding(
@@ -60,15 +64,12 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
             Center(
               child: Text(
                 "Enter phone number\nto send verifition code",
-                style: TextStyle(
-                  color: Colors.grey[300],
-                  fontSize: 20
-                ),
+                style: TextStyle(color: Colors.grey[300], fontSize: 20),
               ),
             ),
             Container(
               padding: EdgeInsets.only(
-                top: (mediaQuery.size.height - mediaQuery.padding.top)*0.03,
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
               ),
               child: VerificationPhone(),
             ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../components/Pharmacies/dropdown_list.dart';
 import '../components/Pharmacies/search.dart';
 import '../models/pharmacy_model_cards.dart';
+import '../pages/home.dart';
 
 class PharmaciesPage extends StatefulWidget {
   static final routeName = "/pharmacies";
@@ -45,12 +46,20 @@ class _PharmaciesPageState extends State<PharmaciesPage> {
                       padding: EdgeInsets.only(
                         left:
                             (mediaquery.size.width - mediaquery.padding.left) *
-                                0.07,
+                                0.03,
                       ),
                     ),
-                    Icon(
-                      Icons.arrow_back,
-                    ),
+                    IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: Theme.of(context).iconTheme.size,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        })
                   ],
                 ),
                 Padding(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 
-import 'package:premedic/pages/passwordreset.dart';
+import 'package:premedic/pages/password_reset.dart';
 
 class VerificationCard extends StatefulWidget {
   @override
@@ -90,14 +90,15 @@ class _VerificationCardState extends State<VerificationCard> {
                   ),
                   child: new Text(
                     "VERIFY",
-                    style: TextStyle(color: Colors.white,letterSpacing: 2),
+                    style: TextStyle(color: Colors.white, letterSpacing: 2),
                   ),
                   color: Theme.of(context).accentColor,
                   onPressed: () {
                     Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PasswordResetPage()),
-                  );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PasswordResetPage()),
+                    );
                   },
                 )),
             Padding(

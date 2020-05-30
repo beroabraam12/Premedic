@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import './pages/passwordreset.dart';
-import './pages/codeverification.dart';
+import './pages/password_reset.dart';
+import './pages/code_verification.dart';
 import './pages/home.dart';
 import './pages/blog_details.dart';
 import './pages/hospital_clinc.dart';
 import './pages/login.dart';
-import './pages/patient.dart';
+import './pages/medical_profile.dart';
 import './pages/patient_profile.dart';
 import './pages/pharmacies.dart';
-import './pages/phoneverification.dart';
+import './pages/phone_verification.dart';
 import './pages/regestration.dart';
 import './pages/blogs.dart';
 
@@ -108,7 +108,7 @@ class MyApp extends StatelessWidget {
         RegestrationPage.routeName: (BuildContext context)=> RegestrationPage(),
         PhoneVerificationPage.routeName: (BuildContext context)=> PhoneVerificationPage(),
         LoginPage.routeName: (BuildContext context)=> LoginPage(),
-        PatientPage.routeName: (BuildContext context)=> PatientPage(),
+        MedicalProfilePage.routeName: (BuildContext context)=> MedicalProfilePage(),
         HospitalsClinicsPage.routeName:(BuildContext context) => HospitalsClinicsPage(),
         PharmaciesPage.routeName:(BuildContext context) => PharmaciesPage(),
         BlogsPage.routeName:(BuildContext context) => BlogsPage(),

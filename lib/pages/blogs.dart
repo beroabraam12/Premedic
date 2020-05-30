@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:premedic/pages/blog_details.dart';
 
+import '../pages/blog_details.dart';
 import '../components/Blogs/search.dart';
 import '../components/Blogs/card.dart';
+import '../pages/home.dart';
 
 class BlogsPage extends StatefulWidget {
   static final routeName = "/blogs";
@@ -33,12 +34,20 @@ class _BlogsPageState extends State<BlogsPage> {
                       padding: EdgeInsets.only(
                         left:
                             (mediaquery.size.width - mediaquery.padding.left) *
-                                0.07,
+                                0.03,
                       ),
                     ),
-                    Icon(
-                      Icons.arrow_back,
-                    ),
+                    IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: Theme.of(context).iconTheme.size,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        })
                   ],
                 ),
                 Padding(
