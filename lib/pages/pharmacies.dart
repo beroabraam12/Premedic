@@ -55,7 +55,7 @@ class _PharmaciesPageState extends State<PharmaciesPage> {
                           size: Theme.of(context).iconTheme.size,
                         ),
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pop(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => HomePage()));

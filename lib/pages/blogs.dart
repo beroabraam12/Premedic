@@ -43,7 +43,7 @@ class _BlogsPageState extends State<BlogsPage> {
                           size: Theme.of(context).iconTheme.size,
                         ),
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pop(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => HomePage()));

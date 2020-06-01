@@ -49,7 +49,7 @@ class _MedicalProfilePageState extends State<MedicalProfilePage> {
                         size: 25,
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pop(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => HomePage()));

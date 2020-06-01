@@ -45,7 +45,7 @@ class _HospitalsClinicsPageState extends State<HospitalsClinicsPage> {
                           size: Theme.of(context).iconTheme.size,
                         ),
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pop(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => HomePage()));

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-import 'package:premedic/pages/home.dart';
 import 'package:premedic/pages/regestration.dart';
 import 'package:premedic/pages/phone_verification.dart';
 
@@ -157,8 +156,8 @@ class LoginCard extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PhoneVerificationPage()),
-                  );
+                        builder: (context) => PhoneVerificationPage())
+                    );
                 },
                 child: Text(
                   'Forget Password?',
@@ -185,10 +184,7 @@ class LoginCard extends StatelessWidget {
               child: Text("Login", style: Theme.of(context).textTheme.button),
               color: Theme.of(context).accentColor,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
+                Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
               },
             ),
           ),

@@ -38,7 +38,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                 color: Colors.white,
                 iconSize: Theme.of(context).iconTheme.size,
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pop(
                     context,
                     MaterialPageRoute(builder: (context) => LoginPage()),
                   );

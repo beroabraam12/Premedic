@@ -36,7 +36,7 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                     color: Colors.white,
                     size: Theme.of(context).iconTheme.size),
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pop(
                     context,
                     MaterialPageRoute(
                         builder: (context) => PhoneVerificationPage()),

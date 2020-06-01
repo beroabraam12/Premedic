@@ -15,75 +15,70 @@ class _RegisterCardState extends State<RegisterCard> {
   int id = 1;
   File imageFile;
 
-  _openGallary(BuildContext context) async {
-    var picture =
-        (await ImagePicker().getImage(source: ImageSource.gallery)) as File;
-    this.setState(() {
-      imageFile = picture;
+  final picker = ImagePicker();
+
+  void getImages(BuildContext context, ImageSource source) async {
+    final pickedFile = await picker.getImage(source: source, imageQuality: 50);
+    setState(() {
+      imageFile = File(pickedFile.path);
     });
     Navigator.of(context).pop();
   }
 
-  void _openCamera(BuildContext context) async {
-    File picture =
-        (await ImagePicker().getImage(source: ImageSource.camera)) as File;
-    this.setState(() {
-      imageFile = picture;
-    });
-    Navigator.of(context).pop();
-  }
-
-  Future<void> _showChoiceDialog(BuildContext context) {
-    return showDialog(
+  void _openImagePicker(BuildContext context) {
+    showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Make a Choice!'),
-            content: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[
-                  GestureDetector(
-                    child: Text('Gallery',
-                        style: Theme.of(context).textTheme.headline2),
-                    onTap: () {
-                      _openGallary(context);
-                    },
+          return Container(
+            height: MediaQuery.of(context).size.height * 0.25,
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.01,
+                ),
+                Row(children: <Widget>[
+                  Text(
+                    "Pick Image",
+                    style: TextStyle(color: Colors.black, fontSize: 16),
                   ),
-                  Padding(padding: EdgeInsets.all(10)),
-                  GestureDetector(
-                    child: Text('Camera',
-                        style: Theme.of(context).textTheme.headline2),
-                    onTap: () {
-                      _openCamera(context);
-                    },
-                  )
-                ],
-              ),
+                ]),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.05,
+                ),
+                FlatButton(
+                  textColor: Theme.of(context).primaryColor,
+                  child: Text("Use Camera"),
+                  onPressed: () => getImages(context, ImageSource.camera),
+                ),
+                FlatButton(
+                  textColor: Theme.of(context).primaryColor,
+                  child: Text("Use Gallery"),
+                  onPressed: () => getImages(context, ImageSource.gallery),
+                ),
+              ],
             ),
           );
         });
-
-      
   }
 
   Widget _getImageView(BuildContext context) {
-    if (imageFile == null) {
-      return Container(
-          width: MediaQuery.of(context).size.width * 0.3,
-          height: MediaQuery.of(context).size.height * 0.2,
-          child: GestureDetector(child: Icon(Icons.add, size: 50, color: Colors.white),onTap: (){
-             _showChoiceDialog(context);
-          },),
-          decoration:
-              BoxDecoration(shape: BoxShape.circle, color: Colors.grey));
-    } else {
-      return Container(
-          width: MediaQuery.of(context).size.width * 0.3,
-          height: MediaQuery.of(context).size.height * 0.2,
-          child: Image.file(imageFile, fit: BoxFit.cover),
-          decoration:
-              BoxDecoration(shape: BoxShape.circle, color: Colors.grey));
-    }
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(70),
+      child: Container(
+        width: MediaQuery.of(context).size.height * 0.15,
+        height: MediaQuery.of(context).size.height * 0.15,
+        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+        child: imageFile != null
+            ? Image.file(imageFile, fit: BoxFit.cover)
+            : GestureDetector(
+                child: Icon(Icons.add, size: 50, color: Colors.white),
+                onTap: () {
+                  _openImagePicker(context);
+                },
+              ),
+      ),
+    );
   }
 
   @override
@@ -107,7 +102,14 @@ class _RegisterCardState extends State<RegisterCard> {
             child: Image(image: AssetImage('assets/Logo.png')),
           ),
           Center(
-            child: _getImageView(context),
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
+                bottom:
+                    (mediaQuery.size.height - mediaQuery.padding.bottom) * 0.03,
+              ),
+              child: _getImageView(context),
+            ),
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -533,7 +535,10 @@ class _RegisterCardState extends State<RegisterCard> {
                 ),
                 child: Text("REGISTER", style: TextStyle(color: Colors.white)),
                 color: Theme.of(context).accentColor,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/home', (Route<dynamic> route) => false);
+                },
               ),
             ),
           ),

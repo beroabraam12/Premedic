@@ -40,7 +40,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pop(
                     context,
                     MaterialPageRoute(
                         builder: (context) => CodeVerificationPage()),
