@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:premedic/pages/home.dart';
 import 'dart:io';
-
+import 'package:intl/intl.dart';
 import 'package:premedic/pages/login.dart';
+
+enum Gender { Male, Female }
 
 class RegisterCard extends StatefulWidget {
   @override
@@ -14,8 +17,33 @@ class _RegisterCardState extends State<RegisterCard> {
   String radioButtonItem = 'Gender';
   int id = 1;
   File imageFile;
+  bool _isLoading;
+  DateTime _selectedDate;
 
+  final TextEditingController _passwordTextController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final picker = ImagePicker();
+  Gender _gender = Gender.Male;
+
+  String fullName, email, mobile, password, birthDate;
+
+  void _presentDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: _selectedDate == null ? DateTime.now() : _selectedDate,
+      firstDate: DateTime(1970, 1),
+      lastDate: DateTime.now(),
+    ).then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = pickedDate;
+        // Provider.of<User>(context, listen: false).updatedUser.birthdate =
+        //     pickedDate;
+      });
+    });
+  }
 
   void getImages(BuildContext context, ImageSource source) async {
     final pickedFile = await picker.getImage(source: source, imageQuality: 50);
@@ -81,6 +109,81 @@ class _RegisterCardState extends State<RegisterCard> {
     );
   }
 
+  Widget _buildGenderContainer(mediaQuery) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: mediaQuery.size.width * 0.05),
+      child: Row(
+        children: <Widget>[
+          Flexible(
+            fit: FlexFit.loose,
+            child: RadioListTile<Gender>(
+              title: Text(
+                "Male",
+                style: TextStyle(fontSize: 14),
+              ),
+              value: Gender.Male,
+              groupValue: _gender,
+              onChanged: (Gender value) {
+                setState(() {
+                  _gender = value;
+                });
+              },
+            ),
+          ),
+          Flexible(
+            fit: FlexFit.loose,
+            child: RadioListTile<Gender>(
+              title: Text(
+                "Female",
+                style: TextStyle(fontSize: 14),
+              ),
+              value: Gender.Female,
+              groupValue: _gender,
+              onChanged: (Gender value) {
+                setState(() {
+                  _gender = value;
+                });
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future submitRegister() async {
+    // final authUser = Provider.of<User>(context, listen: false);
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+    setState(() {
+      _isLoading = true;
+    });
+    _formKey.currentState.save();
+    // user = UserModel(
+    //     name: fullname,
+    //     email: email,
+    //     phoneNumber: phone,
+    //     password: password,
+    //     gender: _gender == Gender.Male ? "Male" : "Female",
+    //     block: false);
+
+    var success = true; // await authUser.signup(user, context);
+    if (success) {
+      setState(() {
+        _isLoading = false;
+      });
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          HomePage.routeName, (Route<dynamic> route) => false);
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      // WarningPopup.showWarningDialog(context, false,
+      //     Provider.of<User>(context, listen: false).errorMessage);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -111,303 +214,367 @@ class _RegisterCardState extends State<RegisterCard> {
               child: _getImageView(context),
             ),
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  left:
-                      (mediaQuery.size.width - mediaQuery.padding.left) * 0.025,
-                  top:
-                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.011,
-                ),
-                child: Icon(
-                  Icons.supervised_user_circle,
-                  color: Theme.of(context).accentColor,
-                  size: Theme.of(context).iconTheme.size,
-                ),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(
-                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
-              )),
-              Container(
-                width: (mediaQuery.size.width - mediaQuery.padding.horizontal) *
-                    0.7,
-                height: mediaQuery.size.height * 0.07,
-                decoration: BoxDecoration(
-                  color: Color(0xffffffff),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0.00, 3.00),
-                      color: Color(0xff000000).withOpacity(0.16),
-                      blurRadius: 6,
+          Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left:
+                            (mediaQuery.size.width - mediaQuery.padding.left) *
+                                0.025,
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.011,
+                      ),
+                      child: Icon(
+                        Icons.perm_identity,
+                        color: Theme.of(context).accentColor,
+                        size: Theme.of(context).iconTheme.size,
+                      ),
                     ),
+                    Padding(
+                        padding: EdgeInsets.only(
+                      left: (mediaQuery.size.width - mediaQuery.padding.left) *
+                          0.04,
+                    )),
+                    Container(
+                      width: (mediaQuery.size.width -
+                              mediaQuery.padding.horizontal) *
+                          0.7,
+                      height: mediaQuery.size.height * 0.07,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(30.00),
+                      ),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                              fontSize: 12.0,
+                            ),
+                            hintStyle: Theme.of(context).textTheme.headline3,
+                            hintText: 'Full Name',
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: (mediaQuery.size.width -
+                                      mediaQuery.padding.horizontal) *
+                                  0.05,
+                            )),
+                        keyboardType: TextInputType.text,
+                        style: TextStyle(fontSize: 18),
+                        validator: (value) {
+                          if (value.length < 2) {
+                            return "Please Enter Your Name Correctly";
+                          }
+                          return null;
+                        },
+                        onSaved: (value) => fullName = value,
+                      ),
+                    )
                   ],
-                  borderRadius: BorderRadius.circular(30.00),
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintStyle: Theme.of(context).textTheme.headline3,
-                      hintText: 'Full Name',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: (mediaQuery.size.width -
-                                mediaQuery.padding.horizontal) *
-                            0.05,
-                        vertical: (mediaQuery.size.height -
-                                mediaQuery.padding.vertical) *
-                            0.027,
-                      )),
-                  keyboardType: TextInputType.text,
-                  style: TextStyle(fontSize: 18),
-                ),
-              )
-            ],
-          ),
-          Padding(
-              padding: EdgeInsets.only(
-                  top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                      0.025)),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  left:
-                      (mediaQuery.size.width - mediaQuery.padding.left) * 0.025,
-                  top:
-                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.011,
-                ),
-                child: Icon(
-                  Icons.email,
-                  color: Theme.of(context).accentColor,
-                  size: Theme.of(context).iconTheme.size,
-                ),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(
-                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
-              )),
-              Container(
-                width: (mediaQuery.size.width - mediaQuery.padding.horizontal) *
-                    0.7,
-                height: mediaQuery.size.height * 0.07,
-                decoration: BoxDecoration(
-                  color: Color(0xffffffff),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0.00, 3.00),
-                      color: Color(0xff000000).withOpacity(0.16),
-                      blurRadius: 6,
+                Padding(
+                    padding: EdgeInsets.only(
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.025)),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left:
+                            (mediaQuery.size.width - mediaQuery.padding.left) *
+                                0.025,
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.011,
+                      ),
+                      child: Icon(
+                        Icons.email,
+                        color: Theme.of(context).accentColor,
+                        size: Theme.of(context).iconTheme.size,
+                      ),
                     ),
+                    Padding(
+                        padding: EdgeInsets.only(
+                      left: (mediaQuery.size.width - mediaQuery.padding.left) *
+                          0.04,
+                    )),
+                    Container(
+                      width: (mediaQuery.size.width -
+                              mediaQuery.padding.horizontal) *
+                          0.7,
+                      height: mediaQuery.size.height * 0.07,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(30.00),
+                      ),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value.isEmpty ||
+                              !RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+                                  .hasMatch(value)) {
+                            return 'Please enter a valid email';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) => email = value,
+                        decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                              fontSize: 12.0,
+                            ),
+                            hintStyle: Theme.of(context).textTheme.headline3,
+                            hintText: 'Email',
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: (mediaQuery.size.width -
+                                      mediaQuery.padding.horizontal) *
+                                  0.05,
+                            )),
+                        keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    )
                   ],
-                  borderRadius: BorderRadius.circular(30.00),
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintStyle: Theme.of(context).textTheme.headline3,
-                      hintText: 'Email',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: (mediaQuery.size.width -
-                                mediaQuery.padding.horizontal) *
-                            0.05,
-                        vertical: (mediaQuery.size.height -
-                                mediaQuery.padding.vertical) *
-                            0.027,
-                      )),
-                  keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(fontSize: 18),
-                ),
-              )
-            ],
-          ),
-          Padding(
-              padding: EdgeInsets.only(
-                  top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                      0.025)),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  left:
-                      (mediaQuery.size.width - mediaQuery.padding.left) * 0.025,
-                  top:
-                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.011,
-                ),
-                child: Icon(
-                  Icons.phone_android,
-                  color: Theme.of(context).accentColor,
-                  size: Theme.of(context).iconTheme.size,
-                ),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(
-                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
-              )),
-              Container(
-                width: (mediaQuery.size.width - mediaQuery.padding.horizontal) *
-                    0.7,
-                height: mediaQuery.size.height * 0.07,
-                decoration: BoxDecoration(
-                  color: Color(0xffffffff),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0.00, 3.00),
-                      color: Color(0xff000000).withOpacity(0.16),
-                      blurRadius: 6,
+                Padding(
+                    padding: EdgeInsets.only(
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.025)),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left:
+                            (mediaQuery.size.width - mediaQuery.padding.left) *
+                                0.025,
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.011,
+                      ),
+                      child: Icon(
+                        Icons.phone_android,
+                        color: Theme.of(context).accentColor,
+                        size: Theme.of(context).iconTheme.size,
+                      ),
                     ),
+                    Padding(
+                        padding: EdgeInsets.only(
+                      left: (mediaQuery.size.width - mediaQuery.padding.left) *
+                          0.04,
+                    )),
+                    Container(
+                      width: (mediaQuery.size.width -
+                              mediaQuery.padding.horizontal) *
+                          0.7,
+                      height: mediaQuery.size.height * 0.07,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(30.00),
+                      ),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                              fontSize: 12.0,
+                            ),
+                            hintStyle: Theme.of(context).textTheme.headline3,
+                            hintText: 'Mobile',
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: (mediaQuery.size.width -
+                                      mediaQuery.padding.horizontal) *
+                                  0.05,
+                            )),
+                        onSaved: (value) => mobile = value,
+                        validator: (value) {
+                          if (value.isEmpty ||
+                              RegExp("^(?:[+0]9)?[0-9]{10}\$")
+                                  .hasMatch(value)) {
+                            return "please enter a valid number";
+                          }
+                          return null;
+                        },
+                        keyboardType: TextInputType.phone,
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    )
                   ],
-                  borderRadius: BorderRadius.circular(30.00),
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintStyle: Theme.of(context).textTheme.headline3,
-                      hintText: 'Mobile',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: (mediaQuery.size.width -
-                                mediaQuery.padding.horizontal) *
-                            0.05,
-                        vertical: (mediaQuery.size.height -
-                                mediaQuery.padding.vertical) *
-                            0.027,
-                      )),
-                  keyboardType: TextInputType.phone,
-                  style: TextStyle(fontSize: 18),
-                ),
-              )
-            ],
-          ),
-          Padding(
-              padding: EdgeInsets.only(
-                  top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                      0.025)),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  left:
-                      (mediaQuery.size.width - mediaQuery.padding.left) * 0.025,
-                  top:
-                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.011,
-                ),
-                child: Icon(
-                  Icons.lock_outline,
-                  color: Theme.of(context).accentColor,
-                  size: Theme.of(context).iconTheme.size,
-                ),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(
-                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
-              )),
-              Container(
-                width: (mediaQuery.size.width - mediaQuery.padding.horizontal) *
-                    0.7,
-                height: mediaQuery.size.height * 0.07,
-                decoration: BoxDecoration(
-                  color: Color(0xffffffff),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0.00, 3.00),
-                      color: Color(0xff000000).withOpacity(0.16),
-                      blurRadius: 6,
+                Padding(
+                    padding: EdgeInsets.only(
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.025)),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left:
+                            (mediaQuery.size.width - mediaQuery.padding.left) *
+                                0.025,
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.011,
+                      ),
+                      child: Icon(
+                        Icons.lock_outline,
+                        color: Theme.of(context).accentColor,
+                        size: Theme.of(context).iconTheme.size,
+                      ),
                     ),
+                    Padding(
+                        padding: EdgeInsets.only(
+                      left: (mediaQuery.size.width - mediaQuery.padding.left) *
+                          0.04,
+                    )),
+                    Container(
+                      width: (mediaQuery.size.width -
+                              mediaQuery.padding.horizontal) *
+                          0.7,
+                      height: mediaQuery.size.height * 0.07,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(30.00),
+                      ),
+                      child: TextFormField(
+                        controller: _passwordTextController,
+                        decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                              fontSize: 12.0,
+                            ),
+                            hintStyle: Theme.of(context).textTheme.headline3,
+                            hintText: 'Password',
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: (mediaQuery.size.width -
+                                      mediaQuery.padding.horizontal) *
+                                  0.05,
+                              vertical: (mediaQuery.size.height -
+                                      mediaQuery.padding.vertical) *
+                                  0.027,
+                            )),
+                        validator: (value) {
+                          if (value.length < 6) {
+                            return "Password must be 6 letters or numbers";
+                          }
+                          return null;
+                        },
+                        onSaved: (String value) => password = value,
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    )
                   ],
-                  borderRadius: BorderRadius.circular(30.00),
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintStyle: Theme.of(context).textTheme.headline3,
-                      hintText: 'Password',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: (mediaQuery.size.width -
-                                mediaQuery.padding.horizontal) *
-                            0.05,
-                        vertical: (mediaQuery.size.height -
-                                mediaQuery.padding.vertical) *
-                            0.027,
-                      )),
-                  keyboardType: TextInputType.text,
-                  obscureText: true,
-                  style: TextStyle(fontSize: 18),
-                ),
-              )
-            ],
-          ),
-          Padding(
-              padding: EdgeInsets.only(
-                  top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                      0.025)),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  left:
-                      (mediaQuery.size.width - mediaQuery.padding.left) * 0.025,
-                  top:
-                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.011,
-                ),
-                child: Icon(
-                  Icons.lock_outline,
-                  color: Theme.of(context).accentColor,
-                  size: Theme.of(context).iconTheme.size,
-                ),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(
-                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
-              )),
-              Container(
-                width: (mediaQuery.size.width - mediaQuery.padding.horizontal) *
-                    0.7,
-                height: mediaQuery.size.height * 0.07,
-                decoration: BoxDecoration(
-                  color: Color(0xffffffff),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0.00, 3.00),
-                      color: Color(0xff000000).withOpacity(0.16),
-                      blurRadius: 6,
+                Padding(
+                    padding: EdgeInsets.only(
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.025)),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left:
+                            (mediaQuery.size.width - mediaQuery.padding.left) *
+                                0.025,
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.011,
+                      ),
+                      child: Icon(
+                        Icons.lock_outline,
+                        color: Theme.of(context).accentColor,
+                        size: Theme.of(context).iconTheme.size,
+                      ),
                     ),
+                    Padding(
+                        padding: EdgeInsets.only(
+                      left: (mediaQuery.size.width - mediaQuery.padding.left) *
+                          0.04,
+                    )),
+                    Container(
+                      width: (mediaQuery.size.width -
+                              mediaQuery.padding.horizontal) *
+                          0.7,
+                      height: mediaQuery.size.height * 0.07,
+                      decoration: BoxDecoration(
+                        color: Color(0xffffffff),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0.00, 3.00),
+                            color: Color(0xff000000).withOpacity(0.16),
+                            blurRadius: 6,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(30.00),
+                      ),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                              fontSize: 12.0,
+                            ),
+                            hintStyle: Theme.of(context).textTheme.headline3,
+                            hintText: 'Password Confirmation',
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: (mediaQuery.size.width -
+                                      mediaQuery.padding.horizontal) *
+                                  0.05,
+                            )),
+                        validator: (value) {
+                          if (_passwordTextController.text != value) {
+                            return "Paswword Not Match";
+                          }
+                          return null;
+                        },
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    )
                   ],
-                  borderRadius: BorderRadius.circular(30.00),
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintStyle: Theme.of(context).textTheme.headline3,
-                      hintText: 'Password Confirmation',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: (mediaQuery.size.width -
-                                mediaQuery.padding.horizontal) *
-                            0.05,
-                        vertical: (mediaQuery.size.height -
-                                mediaQuery.padding.vertical) *
-                            0.027,
-                      )),
-                  keyboardType: TextInputType.text,
-                  obscureText: true,
-                  style: TextStyle(fontSize: 18),
-                ),
-              )
-            ],
+                Padding(
+                    padding: EdgeInsets.only(
+                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.025)),
+              ],
+            ),
           ),
-          Padding(
-              padding: EdgeInsets.only(
-                  top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                      0.025)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -444,21 +611,17 @@ class _RegisterCardState extends State<RegisterCard> {
                   ],
                   borderRadius: BorderRadius.circular(30.00),
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintStyle: Theme.of(context).textTheme.headline3,
-                      hintText: 'Birthdate',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: (mediaQuery.size.width -
-                                mediaQuery.padding.horizontal) *
-                            0.05,
-                        vertical: (mediaQuery.size.height -
-                                mediaQuery.padding.vertical) *
-                            0.027,
-                      )),
-                  keyboardType: TextInputType.text,
-                  style: TextStyle(fontSize: 18),
+                child: FlatButton(
+                  onPressed: () => _presentDatePicker(),
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        _selectedDate == null
+                            ? 'Choose BirthDate'
+                            : "Picked Date ${DateFormat.yMMMd().format(_selectedDate)}",
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
@@ -480,46 +643,7 @@ class _RegisterCardState extends State<RegisterCard> {
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.01,
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Radio(
-                value: 1,
-                groupValue: id,
-                onChanged: (val) {
-                  setState(() {
-                    radioButtonItem = 'Gender';
-                    id = 1;
-                  });
-                },
-              ),
-              Text(
-                'Male',
-                style: new TextStyle(fontSize: 17.0),
-              ),
-              Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: (mediaQuery.size.width -
-                              mediaQuery.padding.horizontal) *
-                          0.05)),
-              Radio(
-                value: 2,
-                groupValue: id,
-                onChanged: (val) {
-                  setState(() {
-                    radioButtonItem = 'Gender';
-                    id = 2;
-                  });
-                },
-              ),
-              Text(
-                'Female',
-                style: new TextStyle(
-                  fontSize: 17.0,
-                ),
-              ),
-            ],
-          ),
+          _buildGenderContainer(mediaQuery),
           Padding(
             padding: EdgeInsets.only(
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.02,
@@ -536,8 +660,7 @@ class _RegisterCardState extends State<RegisterCard> {
                 child: Text("REGISTER", style: TextStyle(color: Colors.white)),
                 color: Theme.of(context).accentColor,
                 onPressed: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/home', (Route<dynamic> route) => false);
+                  submitRegister();
                 },
               ),
             ),
