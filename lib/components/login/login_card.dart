@@ -14,6 +14,134 @@ class _LoginCardState extends State<LoginCard> {
   bool _isLoading = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  _buildPhoneField(mediaQuery) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(
+            left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.025,
+            top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.011,
+          ),
+          child: Icon(
+            Icons.phone_android,
+            color: Theme.of(context).accentColor,
+            size: Theme.of(context).iconTheme.size,
+          ),
+        ),
+        Padding(
+            padding: EdgeInsets.only(
+          left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
+        )),
+        Container(
+          width: (mediaQuery.size.width - mediaQuery.padding.horizontal) * 0.7,
+          height: mediaQuery.size.height * 0.07,
+          decoration: BoxDecoration(
+            color: Color(0xffffffff),
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(0.00, 3.00),
+                color: Color(0xff000000).withOpacity(0.16),
+                blurRadius: 6,
+              ),
+            ],
+            borderRadius: BorderRadius.circular(30.00),
+          ),
+          child: TextFormField(
+            decoration: InputDecoration(
+                hintStyle: Theme.of(context).textTheme.headline3,
+                hintText: 'Phone number',
+                border: InputBorder.none,
+                errorStyle: TextStyle(
+                  fontSize: 12.0,
+                ),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal:
+                      (mediaQuery.size.width - mediaQuery.padding.horizontal) *
+                          0.05,
+                )),
+            validator: (value) {
+              if (value.isEmpty ||
+                  RegExp("^(?:[+0]9)?[0-9]{10}\$").hasMatch(value)) {
+                return "please enter a valid number";
+              }
+              return null;
+            },
+            onSaved: (val) => phone = val,
+            keyboardType: TextInputType.phone,
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+      ],
+    );
+  }
+
+  _buildPasswordTextField(mediaQuery) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(
+            left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.025,
+            top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.013,
+          ),
+          child: Icon(
+            Icons.lock,
+            color: Theme.of(context).accentColor,
+            size: Theme.of(context).iconTheme.size,
+          ),
+        ),
+        Padding(
+            padding: EdgeInsets.only(
+          left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.04,
+        )),
+        Container(
+          width: (mediaQuery.size.width - mediaQuery.padding.horizontal) * 0.7,
+          height: mediaQuery.size.height * 0.07,
+          decoration: BoxDecoration(
+            color: Color(0xffffffff),
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(0.00, 3.00),
+                color: Color(0xff000000).withOpacity(0.16),
+                blurRadius: 6,
+              ),
+            ],
+            borderRadius: BorderRadius.circular(30.00),
+          ),
+          child: TextFormField(
+            decoration: InputDecoration(
+                hintStyle: Theme.of(context).textTheme.headline3,
+                hintText: 'Password',
+                labelStyle: TextStyle(fontSize: 20.0),
+                alignLabelWithHint: true,
+                errorStyle: TextStyle(
+                  fontSize: 14.0,
+                ),
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal:
+                      (mediaQuery.size.width - mediaQuery.padding.horizontal) *
+                          0.05,
+                )),
+            validator: (value) {
+              if (value.length < 6) {
+                return "password should be 6 numbers or more";
+              }
+              return null;
+            },
+            onSaved: (val) => pass = val,
+            obscureText: true,
+            style: TextStyle(fontSize: 18),
+            keyboardAppearance: Brightness.dark,
+          ),
+        )
+      ],
+    );
+  }
+
   Future submitLogin() async {
     if (!_formKey.currentState.validate()) {
       return;
@@ -77,149 +205,14 @@ class _LoginCardState extends State<LoginCard> {
             key: _formKey,
             child: Column(
               children: <Widget>[
-                //TODO 1
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(
-                        left:
-                            (mediaQuery.size.width - mediaQuery.padding.left) *
-                                0.025,
-                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                            0.011,
-                      ),
-                      child: Icon(
-                        Icons.phone_android,
-                        color: Theme.of(context).accentColor,
-                        size: Theme.of(context).iconTheme.size,
-                      ),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.only(
-                      left: (mediaQuery.size.width - mediaQuery.padding.left) *
-                          0.04,
-                    )),
-                    Container(
-                      width: (mediaQuery.size.width -
-                              mediaQuery.padding.horizontal) *
-                          0.7,
-                      height: mediaQuery.size.height * 0.07,
-                      decoration: BoxDecoration(
-                        color: Color(0xffffffff),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0.00, 3.00),
-                            color: Color(0xff000000).withOpacity(0.16),
-                            blurRadius: 6,
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(30.00),
-                      ),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            hintStyle: Theme.of(context).textTheme.headline3,
-                            hintText: 'Phone number',
-                            border: InputBorder.none,
-                            errorStyle: TextStyle(
-                              fontSize: 12.0,
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: (mediaQuery.size.width -
-                                      mediaQuery.padding.horizontal) *
-                                  0.05,
-                            )),
-                        validator: (value) {
-                          if (value.isEmpty ||
-                              RegExp("^(?:[+0]9)?[0-9]{10}\$")
-                                  .hasMatch(value)) {
-                            return "please enter a valid number";
-                          }
-                          return null;
-                        },
-                        onSaved: (val) => phone = val,
-                        keyboardType: TextInputType.phone,
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ),
-                  ],
-                ),
-                //TODO 2
+                _buildPhoneField(mediaQuery),
                 Padding(
                   padding: EdgeInsets.only(
                     top: (mediaQuery.size.height - mediaQuery.padding.top) *
                         0.02,
                   ),
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left:
-                            (mediaQuery.size.width - mediaQuery.padding.left) *
-                                0.025,
-                        top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                            0.013,
-                      ),
-                      child: Icon(
-                        Icons.lock,
-                        color: Theme.of(context).accentColor,
-                        size: Theme.of(context).iconTheme.size,
-                      ),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.only(
-                      left: (mediaQuery.size.width - mediaQuery.padding.left) *
-                          0.04,
-                    )),
-                    Container(
-                      width: (mediaQuery.size.width -
-                              mediaQuery.padding.horizontal) *
-                          0.7,
-                      height: mediaQuery.size.height * 0.07,
-                      decoration: BoxDecoration(
-                        color: Color(0xffffffff),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0.00, 3.00),
-                            color: Color(0xff000000).withOpacity(0.16),
-                            blurRadius: 6,
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(30.00),
-                      ),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            hintStyle: Theme.of(context).textTheme.headline3,
-                            hintText: 'Password',
-                            labelStyle: TextStyle(fontSize: 20.0),
-                            alignLabelWithHint: true,
-                            errorStyle: TextStyle(
-                              fontSize: 14.0,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: (mediaQuery.size.width -
-                                      mediaQuery.padding.horizontal) *
-                                  0.05,
-                            )),
-                        validator: (value) {
-                          if (value.length < 6) {
-                            return "password should be 6 numbers or more";
-                          }
-                          return null;
-                        },
-                        onSaved: (val) => pass = val,
-                        obscureText: true,
-                        style: TextStyle(fontSize: 18),
-                        keyboardAppearance: Brightness.dark,
-                      ),
-                    )
-                  ],
-                ),
+                _buildPasswordTextField(mediaQuery),
               ],
             ),
           ),
