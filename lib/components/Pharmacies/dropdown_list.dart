@@ -8,15 +8,15 @@ class DropdownPharmacy extends StatefulWidget {
 
 class _DropdownPharmacyState extends State<DropdownPharmacy> {
   int index = 0;
-
+  List<CityModel> cities = [
+    CityModel(name: " Maadi ,Cairo", icon: Icons.location_on),
+    CityModel(name: "paris", icon: Icons.location_on),
+    CityModel(name: "new york", icon: Icons.location_on),
+  ];
+  CityModel c;
   @override
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);
-    List<CityModel> cities = [
-       CityModel(name: " Maadi ,Cairo", icon: Icons.location_on),
-       CityModel(name: "paris", icon: Icons.location_on),
-       CityModel(name: "new york", icon: Icons.location_on),
-    ];
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,17 +43,20 @@ class _DropdownPharmacyState extends State<DropdownPharmacy> {
               child: DropdownButton(
                 icon: Icon(Icons.arrow_drop_down),
                 isExpanded: false,
-                value: cities[index],
+                value: c == null
+                    ? c
+                    : cities.firstWhere((element) => element.name == c.name),
                 items: cities.map(
                   (CityModel value) {
-                    return  DropdownMenuItem(
+                    return DropdownMenuItem(
                       value: value,
-                      child:  Row(
+                      child: Row(
                         children: <Widget>[
-                           Icon(
+                          Icon(
                             value.icon,
                           ),
-                           Text(value.name,style: Theme.of(context).textTheme.subtitle2)
+                          Text(value.name,
+                              style: Theme.of(context).textTheme.subtitle2)
                         ],
                       ),
                     );
@@ -62,7 +65,7 @@ class _DropdownPharmacyState extends State<DropdownPharmacy> {
                 onChanged: (CityModel value) {
                   setState(
                     () {
-                      index = cities.indexOf(value);
+                      c = value;
                     },
                   );
                 },

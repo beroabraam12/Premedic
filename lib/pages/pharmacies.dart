@@ -93,7 +93,6 @@ class _PharmaciesPageState extends State<PharmaciesPage> {
                       
                       Container(
                         width: (mediaquery.size.width),
-                        height: mediaquery.size.height,
                         child: ListView.builder(
                             physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
