@@ -23,36 +23,43 @@ class _RegestrationPage extends State<RegestrationPage> {
             fit: BoxFit.cover,
           ),
         ),
-        child: ListView(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(
-                top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
-              ),
-            ),
-            Center(
-              child: Text("Register",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30.0,
-                  )),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.03,
-                right:
-                    (mediaQuery.size.width - mediaQuery.padding.right) * 0.03,
-              ),
-              child: Container(
-                width: mediaQuery.size.width,
-                margin: EdgeInsets.symmetric(
-                  vertical:
-                      (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: ListView(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                  top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
                 ),
-                child: RegisterCard(),
               ),
-            ),
-          ],
+              Center(
+                child: Text("Register",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30.0,
+                    )),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left:
+                      (mediaQuery.size.width - mediaQuery.padding.left) * 0.03,
+                  right:
+                      (mediaQuery.size.width - mediaQuery.padding.right) * 0.03,
+                ),
+                child: Container(
+                  width: mediaQuery.size.width,
+                  margin: EdgeInsets.symmetric(
+                    vertical:
+                        (mediaQuery.size.height - mediaQuery.padding.top) *
+                            0.03,
+                  ),
+                  child: RegisterCard(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
