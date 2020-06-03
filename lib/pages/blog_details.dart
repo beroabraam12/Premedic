@@ -62,11 +62,9 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                                                   .size,
                                               color: Colors.white),
                                           onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        BlogsPage()));
+                                            Navigator.pop(
+                                              context,
+                                            );
                                           })),
                                   Padding(
                                     padding: EdgeInsets.only(

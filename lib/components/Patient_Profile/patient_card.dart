@@ -50,6 +50,8 @@ class _PatientCardsState extends State<PatientCards> {
 
     var mediaquery = MediaQuery.of(context);
     return Container(
+      padding: EdgeInsets.only(
+          top: (mediaquery.size.height - mediaquery.padding.top) * 0.02),
       child: Column(
         children: <Widget>[
           ListView.builder(
@@ -59,8 +61,9 @@ class _PatientCardsState extends State<PatientCards> {
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   padding: EdgeInsets.only(
-                      top: (mediaquery.size.height - mediaquery.padding.top) *
-                          0.02),
+                      bottom:
+                          (mediaquery.size.height - mediaquery.padding.top) *
+                              0.02),
                   height: mediaquery.size.height * 0.29,
                   child: GestureDetector(
                       onTap: () {
@@ -413,4 +416,3 @@ class _PatientCardsState extends State<PatientCards> {
     );
   }
 }
- 

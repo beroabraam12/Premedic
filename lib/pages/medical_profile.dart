@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:premedic/pages/patient_profile.dart';
 
 import '../components/medical_profile/chronic_diseases_list.dart';
 import '../components/medical_profile/patientinfo.dart';
@@ -132,7 +133,10 @@ class _MedicalProfilePageState extends State<MedicalProfilePage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(PatientProfilePage.routeName);
+                  },
                   color: Theme.of(context).accentColor,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
