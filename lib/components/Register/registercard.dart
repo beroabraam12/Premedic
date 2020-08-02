@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:premedic/pages/home.dart';
 import 'dart:io';
@@ -718,22 +717,6 @@ class _RegisterCardState extends State<RegisterCard> {
                     top: (mediaQuery.size.height - mediaQuery.padding.top) *
                         0.02,
                   ),
-                ),
-                SignInButton(
-                  Buttons.Facebook,
-                  text: "Sign up with Facebook",
-                  onPressed: () {},
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
-                        0.01,
-                  ),
-                ),
-                SignInButton(
-                  Buttons.Google,
-                  text: "Sign up with Google",
-                  onPressed: () {},
                 ),
               ],
             ),

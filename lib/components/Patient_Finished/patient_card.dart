@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:premedic/models/patient_model.dart';
-import 'package:rating_bar/rating_bar.dart';
 
 class PatientCards extends StatefulWidget {
   @override
@@ -9,7 +9,6 @@ class PatientCards extends StatefulWidget {
 }
 
 class _PatientCardsState extends State<PatientCards> {
-  double _rating;
   @override
   Widget build(BuildContext context) {
     List<PatientCardModel> patientCardList = List();
@@ -301,21 +300,20 @@ class _PatientCardsState extends State<PatientCards> {
                                                 0.015,
                                           )),
                                           RatingBar(
-                                            onRatingChanged: (double rating) {
-                                              setState(() {
-                                                rating = _rating;
-                                              });
-                                            },
-                                            filledIcon: Icons.star,
-                                            emptyIcon: Icons.star_border,
-                                            halfFilledIcon: Icons.star_half,
-                                            isHalfAllowed: true,
-                                            filledColor: Colors.yellow,
-                                            emptyColor: Colors.grey,
-                                            halfFilledColor: Colors.yellow,
+                                            itemSize: 20,
                                             initialRating: 0,
-                                            maxRating: 5,
-                                            size: 40,
+                                            minRating: 1,
+                                            direction: Axis.horizontal,
+                                            allowHalfRating: true,
+                                            itemCount: 5,
+                                            itemBuilder: (context, _) =>
+                                                const Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                            ),
+                                            onRatingUpdate: (rating) {
+                                              print(rating);
+                                            },
                                           ),
                                         ],
                                       )),

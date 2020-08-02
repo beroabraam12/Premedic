@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pinput/pin_put/pin_put.dart';
 
 import 'package:premedic/pages/password_reset.dart';
 
@@ -54,28 +53,28 @@ class _VerificationCardState extends State<VerificationCard> {
                 top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
               ),
             ),
-            Container(
-              width: mediaQuery.size.width * 0.8,
-              child: PinPut(
-                  fieldsCount: 6,
-                  focusNode: _pinPutFocusNode,
-                  controller: _pinPutController,
-                  submittedFieldDecoration: _pinPutDecoration.copyWith(
-                    border: Border(
-                        bottom: BorderSide(
-                      color: Colors.grey[600],
-                      width: 2.0,
-                    )),
-                  ),
-                  selectedFieldDecoration: _pinPutDecoration,
-                  followingFieldDecoration: _pinPutDecoration.copyWith(
-                    border: Border(
-                        bottom: BorderSide(
-                      color: Colors.grey[600],
-                      width: 2.0,
-                    )),
-                  )),
-            ),
+            // Container(
+            //   width: mediaQuery.size.width * 0.8,
+            //   child: PinPut(
+            //       fieldsCount: 6,
+            //       focusNode: _pinPutFocusNode,
+            //       controller: _pinPutController,
+            //       submittedFieldDecoration: _pinPutDecoration.copyWith(
+            //         border: Border(
+            //             bottom: BorderSide(
+            //           color: Colors.grey[600],
+            //           width: 2.0,
+            //         )),
+            //       ),
+            //       selectedFieldDecoration: _pinPutDecoration,
+            //       followingFieldDecoration: _pinPutDecoration.copyWith(
+            //         border: Border(
+            //             bottom: BorderSide(
+            //           color: Colors.grey[600],
+            //           width: 2.0,
+            //         )),
+            //       )),
+            // ),
             Padding(
               padding: EdgeInsets.only(
                 top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.08,
