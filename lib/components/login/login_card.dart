@@ -179,6 +179,7 @@ class _LoginCardState extends State<LoginCard> {
       ),
       elevation: 1,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(
@@ -197,7 +198,7 @@ class _LoginCardState extends State<LoginCard> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.04,
+              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.06,
             ),
           ),
           Form(
@@ -212,6 +213,12 @@ class _LoginCardState extends State<LoginCard> {
                   ),
                 ),
                 _buildPasswordTextField(mediaQuery),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: (mediaQuery.size.height - mediaQuery.padding.top) *
+                        0.02,
+                  ),
+                ),
               ],
             ),
           ),
@@ -237,7 +244,7 @@ class _LoginCardState extends State<LoginCard> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.01,
+              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
             ),
           ),
           Container(
@@ -292,12 +299,6 @@ class _LoginCardState extends State<LoginCard> {
           Padding(
             padding: EdgeInsets.only(
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
-            ),
-          ),
-          Text('OR', style: TextStyle(color: Colors.grey)),
-          Padding(
-            padding: EdgeInsets.only(
-              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.01,
             ),
           ),
         ],

@@ -246,19 +246,32 @@ class _PatientCardsState extends State<PatientCards> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: <Widget>[
                                               Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
                                                 children: <Widget>[
                                                   Icon(Icons.access_time,
                                                       size: 15,
                                                       color: Theme.of(context)
                                                           .accentColor),
-                                                  Text(
-                                                      'Start' +
-                                                          patientCardList[index]
-                                                              .start,
+                                                  Text('Start',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .overline),
+                                                  Text(
+                                                    patientCardList[index]
+                                                        .start,
+                                                    style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
                                                 ],
+                                              ),
+                                              SizedBox(
+                                                width: 20,
                                               ),
                                               Row(
                                                 children: <Widget>[
@@ -266,13 +279,20 @@ class _PatientCardsState extends State<PatientCards> {
                                                       size: 15,
                                                       color: Theme.of(context)
                                                           .accentColor),
-                                                  Text(
-                                                      'Finish' +
-                                                          patientCardList[index]
-                                                              .finish,
+                                                  Text('Finish',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .overline),
+                                                  Text(
+                                                    patientCardList[index]
+                                                        .finish,
+                                                    style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  )
                                                 ],
                                               ),
                                             ],
@@ -284,14 +304,18 @@ class _PatientCardsState extends State<PatientCards> {
                             });
                       },
                       child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
                           elevation: 3,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: mediaquery.size.width * 0.05),
                           child: Column(
                             children: <Widget>[
                               Padding(
                                   padding: EdgeInsets.only(
                                       top: (mediaquery.size.height -
                                               mediaquery.padding.top) *
-                                          0.02)),
+                                          0.03)),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
