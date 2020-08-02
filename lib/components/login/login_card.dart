@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 import 'package:premedic/pages/regestration.dart';
 import 'package:premedic/pages/phone_verification.dart';
@@ -300,19 +299,6 @@ class _LoginCardState extends State<LoginCard> {
             padding: EdgeInsets.only(
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.01,
             ),
-          ),
-          SignInButton(
-            Buttons.Facebook,
-            text: "Continue with Facebook",
-            onPressed: () {},
-          ),
-          SizedBox(
-            height: (mediaQuery.size.height - mediaQuery.padding.top) * 0.005,
-          ),
-          SignInButton(
-            Buttons.Google,
-            text: "Sign in with Google",
-            onPressed: () {},
           ),
         ],
       ),

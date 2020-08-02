@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rating_bar/rating_bar.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:premedic/models/hospital_model_cards.dart';
 import './hospital_clinc_dialog_days.dart';
@@ -114,22 +114,20 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                                                   .top) *
                                                           0.01)),
                                               RatingBar(
-                                                onRatingChanged:
-                                                    (double rating) {
-                                                  setState(() {
-                                                    _rating = rating;
-                                                  });
-                                                },
-                                                filledIcon: Icons.star,
-                                                emptyIcon: Icons.star_border,
-                                                halfFilledIcon: Icons.star_half,
-                                                isHalfAllowed: true,
-                                                filledColor: Colors.yellow,
-                                                emptyColor: Colors.grey,
-                                                halfFilledColor: Colors.yellow,
+                                                itemSize: 20,
                                                 initialRating: 0,
-                                                maxRating: 5,
-                                                size: 30,
+                                                minRating: 1,
+                                                direction: Axis.horizontal,
+                                                allowHalfRating: true,
+                                                itemCount: 5,
+                                                itemBuilder: (context, _) =>
+                                                    const Icon(
+                                                  Icons.star,
+                                                  color: Colors.amber,
+                                                ),
+                                                onRatingUpdate: (rating) {
+                                                  print(rating);
+                                                },
                                               ),
                                               Text(
                                                 'Perceptions Rating : $_rating',
