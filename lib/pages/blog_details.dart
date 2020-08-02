@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../models/blog_detail_model.dart';
-import '../pages/blogs.dart';
 
 class BlogDetailsPage extends StatefulWidget {
   static final routeName = "/blogs-details";
