@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:premedic/models/user.dart';
 import 'package:premedic/pages/home.dart';
 import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:premedic/pages/login.dart';
+import 'package:premedic/provider/user.dart';
+import 'package:provider/provider.dart';
 
 enum Gender { Male, Female }
 
@@ -17,6 +20,7 @@ class _RegisterCardState extends State<RegisterCard> {
   int id = 1;
   File imageFile;
   bool _isLoading;
+  UserModel user;
   DateTime _selectedDate;
 
   final TextEditingController _passwordTextController = TextEditingController();
@@ -151,7 +155,7 @@ class _RegisterCardState extends State<RegisterCard> {
   }
 
   Future submitRegister() async {
-    // final authUser = Provider.of<User>(context, listen: false);
+    final authUser = Provider.of<User>(context, listen: false);
     if (!_formKey.currentState.validate()) {
       return;
     }
@@ -159,15 +163,17 @@ class _RegisterCardState extends State<RegisterCard> {
       _isLoading = true;
     });
     _formKey.currentState.save();
-    // user = UserModel(
-    //     name: fullname,
-    //     email: email,
-    //     phoneNumber: phone,
-    //     password: password,
-    //     gender: _gender == Gender.Male ? "Male" : "Female",
-    //     block: false);
+    user = UserModel(
+      name: fullName,
+      email: email,
+      phoneNumber: mobile,
+      password: password,
+      gender: _gender == Gender.Male ? "Male" : "Female",
+      birthDate: _selectedDate,
+      image: imageFile,
+    );
 
-    var success = true; // await authUser.signup(user, context);
+    var success = await authUser.register(user);
     if (success) {
       setState(() {
         _isLoading = false;

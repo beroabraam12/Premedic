@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:premedic/pages/home.dart';
 
 import 'package:premedic/pages/regestration.dart';
 import 'package:premedic/pages/phone_verification.dart';
+import 'package:premedic/provider/user.dart';
+import 'package:provider/provider.dart';
 
 class LoginCard extends StatefulWidget {
   @override
@@ -13,7 +16,7 @@ class _LoginCardState extends State<LoginCard> {
   bool _isLoading = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  _buildPhoneField(mediaQuery) {
+  _buildPhoneField(mediaQuery, context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -65,9 +68,11 @@ class _LoginCardState extends State<LoginCard> {
                   RegExp("^(?:[+0]9)?[0-9]{10}\$").hasMatch(value)) {
                 return "please enter a valid number";
               }
+
               return null;
             },
-            onSaved: (val) => phone = val,
+            onSaved: (val) =>
+                Provider.of<User>(context, listen: false).phone = val,
             keyboardType: TextInputType.phone,
             style: TextStyle(fontSize: 18),
           ),
@@ -76,7 +81,7 @@ class _LoginCardState extends State<LoginCard> {
     );
   }
 
-  _buildPasswordTextField(mediaQuery) {
+  _buildPasswordTextField(mediaQuery, context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -131,7 +136,8 @@ class _LoginCardState extends State<LoginCard> {
               }
               return null;
             },
-            onSaved: (val) => pass = val,
+            onSaved: (val) =>
+                Provider.of<User>(context, listen: false).password = val,
             obscureText: true,
             style: TextStyle(fontSize: 18),
             keyboardAppearance: Brightness.dark,
@@ -142,6 +148,7 @@ class _LoginCardState extends State<LoginCard> {
   }
 
   Future submitLogin() async {
+    Function login = Provider.of<User>(context, listen: false).login;
     if (!_formKey.currentState.validate()) {
       return;
     }
@@ -149,14 +156,13 @@ class _LoginCardState extends State<LoginCard> {
       _isLoading = true;
     });
     _formKey.currentState.save();
-    var success = true;
-    // await login(loginData["phone"], loginData["password"], context);
+    var success = await login();
     if (success) {
       setState(() {
         _isLoading = false;
       });
-      Navigator.of(context)
-          .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          HomePage.routeName, (Route<dynamic> route) => false);
     } else {
       setState(() {
         _isLoading = false;
@@ -205,14 +211,14 @@ class _LoginCardState extends State<LoginCard> {
             key: _formKey,
             child: Column(
               children: <Widget>[
-                _buildPhoneField(mediaQuery),
+                _buildPhoneField(mediaQuery, context),
                 Padding(
                   padding: EdgeInsets.only(
                     top: (mediaQuery.size.height - mediaQuery.padding.top) *
                         0.02,
                   ),
                 ),
-                _buildPasswordTextField(mediaQuery),
+                _buildPasswordTextField(mediaQuery, context),
                 Padding(
                   padding: EdgeInsets.only(
                     top: (mediaQuery.size.height - mediaQuery.padding.top) *
@@ -247,20 +253,25 @@ class _LoginCardState extends State<LoginCard> {
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
             ),
           ),
-          Container(
-            width: mediaQuery.size.width * 0.55,
-            height: mediaQuery.size.height * 0.07,
-            child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(40.0),
-              ),
-              child: Text("Login", style: Theme.of(context).textTheme.button),
-              color: Theme.of(context).accentColor,
-              onPressed: () {
-                submitLogin();
-              },
-            ),
-          ),
+          _isLoading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Container(
+                  width: mediaQuery.size.width * 0.55,
+                  height: mediaQuery.size.height * 0.07,
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40.0),
+                    ),
+                    child: Text("Login",
+                        style: Theme.of(context).textTheme.button),
+                    color: Theme.of(context).accentColor,
+                    onPressed: () {
+                      submitLogin();
+                    },
+                  ),
+                ),
           Padding(
             padding: EdgeInsets.only(
               top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.03,
