@@ -43,14 +43,14 @@ class MyApp extends StatelessWidget {
                 letterSpacing: 12.9,
               ),
               headline6: TextStyle(
-                  color: Colors.black87, fontSize: 25, letterSpacing: 0.5),
+                  color: Colors.black, fontSize: 23, letterSpacing: 0.5),
               overline: TextStyle(
                 color: Color(0x60000000),
                 fontSize: 12,
               ),
               bodyText2: TextStyle(
                 fontSize: 16,
-                color: Colors.black,
+                color: Colors.black38,
                 letterSpacing: 0.5,
               ),
               bodyText1: TextStyle(

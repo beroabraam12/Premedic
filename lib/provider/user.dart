@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class User with ChangeNotifier {
-  static final url = "http://192.168.1.110:8000";
+  static final url = "http://192.168.1.105:8000";
   UserModel user;
   String phone, password, errorMessage, userToken;
 
@@ -15,11 +15,13 @@ class User with ChangeNotifier {
     errorMessage = "";
     final imageUploadRequest =
         http.MultipartRequest('POST', Uri.parse("$url/api/user-register"));
-    imageUploadRequest.files.add(await http.MultipartFile.fromPath(
-      'image',
-      user.image.path,
-      contentType: MediaType('application', 'x-tar'),
-    ));
+    imageUploadRequest.files.add(
+      await http.MultipartFile.fromPath(
+        'avatar',
+        user.image.path,
+        contentType: MediaType('application', 'x-tar'),
+      ),
+    );
     imageUploadRequest.headers['Accept'] = "application/json";
     imageUploadRequest.fields['full_name'] = user.name;
     imageUploadRequest.fields['email'] = user.email;
@@ -34,6 +36,7 @@ class User with ChangeNotifier {
       final response = await http.Response.fromStream(streamedResponse);
 
       final responseData = json.decode(response.body) as Map<String, dynamic>;
+      print(responseData);
       if (response.statusCode == 200 || response.statusCode == 201) {
         //  getLawyerData(context);
         errorMessage += "";
@@ -93,4 +96,6 @@ class User with ChangeNotifier {
     }
     return false;
   }
+
+  Future<void> getData() async {}
 }

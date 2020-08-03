@@ -315,7 +315,7 @@ class _PatientCardsState extends State<PatientCards> {
                                   padding: EdgeInsets.only(
                                       top: (mediaquery.size.height -
                                               mediaquery.padding.top) *
-                                          0.03)),
+                                          0.01)),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,

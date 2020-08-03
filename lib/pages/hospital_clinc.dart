@@ -65,7 +65,7 @@ class _HospitalsClinicsPageState extends State<HospitalsClinicsPage> {
                   Column(
                     children: <Widget>[
                       Text(
-                        'Hospitals & Clinics',
+                        'Clinics',
                         style: Theme.of(context).textTheme.headline6,
                       ),
                       Padding(

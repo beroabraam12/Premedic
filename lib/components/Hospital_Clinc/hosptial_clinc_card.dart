@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:mdi/mdi.dart';
 
 import 'package:premedic/models/hospital_model_cards.dart';
 import './hospital_clinc_dialog_days.dart';
@@ -16,13 +17,13 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
     List<HospitalClincModel> hospitalCardList = List();
     hospitalCardList.add(HospitalClincModel(
       "Doctor Name Clinc",
-      "notes bla bla bla",
+      "notes bla bla bla\nblablabla\nblalfsaf;aslfas",
       "Rating 3.5",
       'https://madosan.com.tr/assets/uploads/galeri/super-market-hiper-market/img-6510-jpg_1505830068.jpg',
     ));
     hospitalCardList.add(HospitalClincModel(
       "Hospital Name",
-      "notes bla bla bla",
+      "notes bla bla bla\nblablabla\nblalfsaf;aslfas",
       "Rating 3.5",
       'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyxwmSZ_bvZ6XLAehGVLTQ93P0h5TvQ3Unvsj1awSZPIQ-6B1y',
     ));
@@ -50,17 +51,18 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                               actions: <Widget>[
                                 SafeArea(
                                   child: Container(
-                                    height: mediaquery.size.height * 0.8,
+                                    padding: EdgeInsets.all(10),
                                     width: mediaquery.size.width,
                                     child: Column(
                                       children: <Widget>[
                                         Container(
-                                          height: mediaquery.size.height * 0.2,
                                           width: mediaquery.size.width,
                                           child: Row(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                CrossAxisAlignment.center,
                                             mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: <Widget>[
                                               Column(
                                                 crossAxisAlignment:
@@ -86,17 +88,26 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                                 ],
                                               ),
                                               Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: (mediaquery
-                                                                  .size.width -
-                                                              mediaquery.padding
-                                                                  .horizontal) *
-                                                          0.005)),
-                                              CircleAvatar(
-                                                backgroundImage: NetworkImage(
-                                                    hospitalCardList[index]
-                                                        .profileimage),
-                                                radius: 20,
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        mediaquery.size.width *
+                                                            0.005),
+                                              ),
+                                              ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(50),
+                                                ),
+                                                child: Container(
+                                                  padding: EdgeInsets.all(1),
+                                                  color: Colors.red,
+                                                  child: IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(
+                                                      Icons.call,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -113,21 +124,31 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                                               mediaquery.padding
                                                                   .top) *
                                                           0.01)),
-                                              RatingBar(
-                                                itemSize: 20,
-                                                initialRating: 0,
-                                                minRating: 1,
-                                                direction: Axis.horizontal,
-                                                allowHalfRating: true,
-                                                itemCount: 5,
-                                                itemBuilder: (context, _) =>
-                                                    const Icon(
-                                                  Icons.star,
-                                                  color: Colors.amber,
+                                              IgnorePointer(
+                                                ignoring: true,
+                                                child: RatingBar(
+                                                  itemSize: 30,
+                                                  initialRating: 3,
+                                                  minRating: 1,
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemBuilder: (context, _) =>
+                                                      const Icon(
+                                                    Icons.star,
+                                                    color: Colors.amber,
+                                                  ),
+                                                  onRatingUpdate: (rating) {
+                                                    print(rating);
+                                                    setState(() {
+                                                      _rating = rating;
+                                                    });
+                                                  },
                                                 ),
-                                                onRatingUpdate: (rating) {
-                                                  print(rating);
-                                                },
+                                              ),
+                                              SizedBox(
+                                                height: mediaquery.size.height *
+                                                    0.01,
                                               ),
                                               Text(
                                                 'Perceptions Rating : $_rating',
@@ -174,29 +195,59 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                                                     MainAxisAlignment
                                                         .spaceEvenly,
                                                 children: <Widget>[
-                                                  CircleAvatar(
-                                                    backgroundImage:
-                                                        NetworkImage(
-                                                            hospitalCardList[
-                                                                    index]
-                                                                .profileimage),
-                                                    radius: 25,
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(50),
+                                                    ),
+                                                    child: Container(
+                                                      padding:
+                                                          EdgeInsets.all(1),
+                                                      color: Colors.red,
+                                                      child: IconButton(
+                                                        onPressed: () {},
+                                                        icon: Icon(
+                                                          Mdi.instagram,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ),
-                                                  CircleAvatar(
-                                                    backgroundImage:
-                                                        NetworkImage(
-                                                            hospitalCardList[
-                                                                    index]
-                                                                .profileimage),
-                                                    radius: 25,
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(50),
+                                                    ),
+                                                    child: Container(
+                                                      padding:
+                                                          EdgeInsets.all(1),
+                                                      color: Colors.red,
+                                                      child: IconButton(
+                                                        onPressed: () {},
+                                                        icon: Icon(
+                                                          Mdi.facebook,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ),
-                                                  CircleAvatar(
-                                                    backgroundImage:
-                                                        NetworkImage(
-                                                            hospitalCardList[
-                                                                    index]
-                                                                .profileimage),
-                                                    radius: 25,
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(50),
+                                                    ),
+                                                    child: Container(
+                                                      padding:
+                                                          EdgeInsets.all(1),
+                                                      color: Colors.red,
+                                                      child: IconButton(
+                                                        onPressed: () {},
+                                                        icon: Icon(
+                                                          Mdi.google,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ),
                                                 ],
                                               )
@@ -282,7 +333,7 @@ class _HospitalClincCardsState extends State<HospitalClincCards> {
                               padding: EdgeInsets.only(
                                 top: (mediaquery.size.height -
                                         mediaquery.padding.top) *
-                                    0.05,
+                                    0.01,
                                 left: (mediaquery.size.width -
                                         mediaquery.padding.left) *
                                     0.050,
