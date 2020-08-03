@@ -25,10 +25,14 @@ dependencies:
   pinput: ^0.2.4
   image_picker: ^0.6.7+2
   intl: ^0.16.1
+<<<<<<< HEAD
   provider: ^4.3.1
   http: ^0.12.2
   shared_preferences: ^0.5.8
   http_parser: ^3.1.4
+=======
+  barcode_scan: ^1.0.0
+>>>>>>> 14ff5a7e881f4e59d195b609cea829eb857ced48
 
 dev_dependencies:
   flutter_test:
