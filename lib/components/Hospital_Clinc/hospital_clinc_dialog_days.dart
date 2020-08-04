@@ -148,8 +148,16 @@ class _HospitalDialogCardDaysState extends State<HospitalDialogCardDays> {
           crossAxisSpacing: 5,
           crossAxisCount: 3,
         ),
-        itemBuilder: (context, index) => _dayCard(dayes[index]),
-        itemCount: dayes.length,
+        itemBuilder: (context, index) => index == dayes.length - 1
+            ? Container()
+            : index == dayes.length
+                ? _dayCard(
+                    dayes[dayes.length - 1],
+                  )
+                : _dayCard(
+                    dayes[index],
+                  ),
+        itemCount: dayes.length + 1,
       ),
     );
   }

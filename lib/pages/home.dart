@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:barcode_scan/barcode_scan.dart';
-
-import '../components/customIcons/custom_icon_icons.dart';
+import 'package:mdi/mdi.dart';
+import 'package:premedic/components/custom_drawer.dart';
 import './medical_profile.dart';
 import './hospital_clinc.dart';
 import './pharmacies.dart';
@@ -22,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     var mediaQuery = MediaQuery.of(context);
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer(),
+      drawer: CustomDrawer(),
       body: Container(
         height: mediaQuery.size.height,
         width: mediaQuery.size.width,
@@ -166,9 +165,9 @@ class _HomePageState extends State<HomePage> {
                                 color: Theme.of(context).accentColor,
                               ),
                               child: Icon(
-                                CustomIcon.barcode,
+                                Mdi.barcode,
                                 color: Colors.white,
-                                size: 30,
+                                size: 50,
                               ),
                             ),
                           ),
