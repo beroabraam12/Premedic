@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../components/login/login_card.dart';
 
 class LoginPage extends StatefulWidget {
-  static final routeName = '/';
+  static final routeName = '/login';
   @override
   _LoginPageState createState() => _LoginPageState();
 }

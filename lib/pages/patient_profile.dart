@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:premedic/provider/medical.dart';
+import 'package:premedic/provider/user.dart';
+import 'package:provider/provider.dart';
 
 import '../components/Patient_Profile/filter.dart';
 import '../components/Patient_Profile/patient_card.dart';
@@ -11,8 +15,17 @@ class PatientProfilePage extends StatefulWidget {
 
 class _PatientProfilePageState extends State<PatientProfilePage> {
   @override
+  void initState() {
+    Provider.of<Medical>(context, listen: false)
+        .getPerception()
+        .then((value) {});
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var mediaquery = MediaQuery.of(context);
+    final user = Provider.of<User>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -53,10 +66,11 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  'Patient Name',
+                                  user.user.name,
                                   style: Theme.of(context).textTheme.caption,
                                 ),
-                                Text('Profile Last Update 20/3/2020',
+                                Text(
+                                    'Last Updated at ${DateFormat("EEEE, MMMM d").format(user.user.updatedAt)}',
                                     style: Theme.of(context).textTheme.button),
                               ],
                             ),
@@ -68,8 +82,7 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
                                   0.02,
                             ),
                             child: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyxwmSZ_bvZ6XLAehGVLTQ93P0h5TvQ3Unvsj1awSZPIQ-6B1y'),
+                              backgroundImage: NetworkImage(user.user.avater),
                               radius: 30,
                             ),
                           ),

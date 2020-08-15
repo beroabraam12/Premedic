@@ -2,8 +2,8 @@ import 'dart:io';
 
 class UserModel {
   String id, name, email, phoneNumber, bloodType;
-  DateTime birthDate;
-  double width, height;
+  DateTime birthDate, updatedAt;
+  String width, height;
   String avater, token, password, gender;
   File image;
   UserModel(
@@ -13,6 +13,7 @@ class UserModel {
       this.phoneNumber,
       this.bloodType,
       this.birthDate,
+      this.updatedAt,
       this.width,
       this.height,
       this.avater,

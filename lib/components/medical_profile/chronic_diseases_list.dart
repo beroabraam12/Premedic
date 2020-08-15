@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
 
-import 'package:premedic/models/chronic_diseases_model.dart';
+import 'package:premedic/provider/user.dart';
+import 'package:provider/provider.dart';
 
 class ChronicDiseasesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-    List<ChronicDiseasesModel> chronicDiseasesList = List();
-    chronicDiseasesList.add(ChronicDiseasesModel(
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ53fkKIu5OaLkgd4s4RMMPOmpOqdyXud7T0BWCfvUIddTlSdSD&usqp=CAU',
-        'Blood Pressure'));
-    chronicDiseasesList.add(ChronicDiseasesModel(
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSkUJmQBpXVM1oJWREQfRW1sB1feKwZw2mhNswWKQGWUl_9-9Fv&usqp=CAU',
-        'Diabetes'));
+    final diseases = Provider.of<User>(context).diseases;
 
     return Container(
       width: mediaQuery.size.width,
       height: mediaQuery.size.height * 0.25,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: chronicDiseasesList.length,
-        itemBuilder: (BuildContext context , int index){
+        itemCount: diseases.length,
+        itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: EdgeInsets.only(
-              top: (mediaQuery.size.height-mediaQuery.padding.top)*0.02,
-              left: (mediaQuery.size.width-mediaQuery.padding.left)*0.03,
-              right: (mediaQuery.size.width-mediaQuery.padding.right)*0.03,
-              bottom: (mediaQuery.size.height-mediaQuery.padding.bottom)*0.01,
+              top: (mediaQuery.size.height - mediaQuery.padding.top) * 0.02,
+              left: (mediaQuery.size.width - mediaQuery.padding.left) * 0.03,
+              right: (mediaQuery.size.width - mediaQuery.padding.right) * 0.03,
+              bottom:
+                  (mediaQuery.size.height - mediaQuery.padding.bottom) * 0.01,
             ),
             child: Container(
               width: mediaQuery.size.width * 0.5,
@@ -42,21 +38,21 @@ class ChronicDiseasesList extends StatelessWidget {
                 borderRadius: BorderRadius.circular(70),
               ),
               child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                     CircleAvatar(
-                      radius: 45,
-                      backgroundColor: Colors.transparent,
-                      backgroundImage: NetworkImage(
-                        chronicDiseasesList[index].diseasesImg
-                      ),
-                    ), 
-                    Padding(padding: EdgeInsets.only(
-                      top: (mediaQuery.size.height-mediaQuery.padding.top)*0.01
-                    )),
-                    Text(chronicDiseasesList[index].diseasesName),
-                  ],
-                ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  CircleAvatar(
+                    radius: 45,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: NetworkImage(diseases[index].imgUrl),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(
+                          top: (mediaQuery.size.height -
+                                  mediaQuery.padding.top) *
+                              0.01)),
+                  Text(diseases[index].name),
+                ],
+              ),
             ),
           );
         },

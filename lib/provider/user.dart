@@ -3,15 +3,33 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:premedic/components/Register/registercard.dart';
+import 'package:premedic/models/diseases.dart';
+import 'package:premedic/models/medicines.dart';
 import 'package:premedic/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class User with ChangeNotifier {
-  static final url = "http://192.168.1.106:8000";
+  static final url = "http://192.168.1.109:8000";
   UserModel user;
-  String phone, password, errorMessage, userToken;
+  String phone, password, errorMessage = "", userToken;
+  bool isLogin = false;
   Gender updatedGender;
+  List<DiseasesModel> _diseases = [];
+  List<MedicinesModel> _medicines = [];
+  void changeUserData(userData) {
+    user = userData;
+    notifyListeners();
+  }
+
+  List<DiseasesModel> get diseases {
+    return _diseases;
+  }
+
+  List<MedicinesModel> get medicines {
+    return _medicines;
+  }
+
   Future<bool> register(UserModel user) async {
     errorMessage = "";
     final imageUploadRequest =
@@ -57,6 +75,19 @@ class User with ChangeNotifier {
       return false;
     }
     return true;
+  }
+
+  void checkLoginState() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    userToken = prefs.getString('token');
+
+    if (userToken != null) {
+      isLogin = true;
+      notifyListeners();
+      await getData();
+    } else {
+      return;
+    }
   }
 
   Future<bool> login() async {
@@ -110,8 +141,8 @@ class User with ChangeNotifier {
             'Content-Type': 'application/json',
           },
         ).timeout(Duration(seconds: 20));
-        print(response.body);
-        final Map<String, dynamic> responseData = json.decode(response.body)[0];
+        final Map<String, dynamic> responseData =
+            json.decode(response.body)["data"][0];
         if (response.statusCode == 200 || response.statusCode == 201) {
           var userData = responseData;
           user = UserModel(
@@ -120,14 +151,40 @@ class User with ChangeNotifier {
             email: userData['email'],
             phoneNumber: userData['phone_number'],
             gender: userData['gender'],
-            avater: "$url${userData['avatar']}",
+            avater: "${userData['avatar']}",
             birthDate: DateTime.parse(userData['birthdate'].toString()),
+            updatedAt: DateTime.parse(userData['updated_at'].toString()),
             bloodType: userData['blood_type'],
             height: userData['height'],
             width: userData['weight'],
           );
           updatedGender =
               user.gender.toLowerCase() == "male" ? Gender.Male : Gender.Female;
+          List<DiseasesModel> list = [];
+          List<dynamic> a = userData['chronic_diseases'];
+          a.forEach((element) {
+            list.add(
+              DiseasesModel(
+                id: element["chronic_diseases_id"].toString(),
+                name: element['chronic_diseases_name_en'],
+                imgUrl: element['image'],
+              ),
+            );
+          });
+          _diseases = list;
+          List<MedicinesModel> list2 = [];
+          List<dynamic> ab = userData['medicines'];
+          ab.forEach((element) {
+            list2.add(
+              MedicinesModel(
+                id: element["medicine_id"].toString(),
+                name: element['medicine_name_en'],
+                image: element['medicine_image'],
+              ),
+            );
+          });
+          _medicines = list2;
+          print(a);
           notifyListeners();
         } else if (response.statusCode == 500 ||
             response.statusCode == 400 ||

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:premedic/models/patient_model.dart';
+import 'package:premedic/models/prescriptions.dart';
+import 'package:premedic/provider/medical.dart';
+import 'package:provider/provider.dart';
 
 class PatientCards extends StatefulWidget {
   @override
@@ -10,43 +14,8 @@ class PatientCards extends StatefulWidget {
 class _PatientCardsState extends State<PatientCards> {
   @override
   Widget build(BuildContext context) {
-    List<PatientCardModel> patientCardList = List();
-    patientCardList.add(PatientCardModel(
-      "Doctor Name",
-      "notes bla bla bla bla bla bla bla bla bla bla bla bla",
-      "12/07/2020",
-      '12/07/2020',
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyxwmSZ_bvZ6XLAehGVLTQ93P0h5TvQ3Unvsj1awSZPIQ-6B1y",
-      "Panadol Extra",
-      "3",
-    ));
-    patientCardList.add(PatientCardModel(
-      "Doctor Name",
-      "notes bla bla bla bla bla bla bla bla bla bla bla bla bla",
-      "12/07/2020",
-      '12/07/2020',
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyxwmSZ_bvZ6XLAehGVLTQ93P0h5TvQ3Unvsj1awSZPIQ-6B1y",
-      "Panadol Extra",
-      "3",
-    ));
-    patientCardList.add(PatientCardModel(
-      "Doctor Name",
-      "notes bla bla bla bla bla bla bla bla bla bla bla bla bla",
-      "12/07/2020",
-      '12/07/2020',
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyxwmSZ_bvZ6XLAehGVLTQ93P0h5TvQ3Unvsj1awSZPIQ-6B1y",
-      "Panadol Extra",
-      "3",
-    ));
-    patientCardList.add(PatientCardModel(
-      "Doctor Name",
-      "notes bla bla bla bla bla bla bla bla bla bla bla bla bla",
-      "12/07/2020",
-      '12/07/2020',
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyxwmSZ_bvZ6XLAehGVLTQ93P0h5TvQ3Unvsj1awSZPIQ-6B1y",
-      "Panadol Extra",
-      "3",
-    ));
+    List<PrescriptionsModel> prescriptions =
+        Provider.of<Medical>(context).prescriptions;
 
     var mediaquery = MediaQuery.of(context);
     return Container(
@@ -56,9 +25,9 @@ class _PatientCardsState extends State<PatientCards> {
         children: <Widget>[
           ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: patientCardList.length,
+              itemCount: prescriptions.length,
               shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index) {
+              itemBuilder: (BuildContext context, int indexx) {
                 return Container(
                   padding: EdgeInsets.only(
                       bottom:
@@ -73,14 +42,18 @@ class _PatientCardsState extends State<PatientCards> {
                               return AlertDialog(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
-                                        Radius.circular(20.0))),
+                                        Radius.circular(30.0))),
                                 actions: <Widget>[
                                   Container(
                                       padding: EdgeInsets.only(
                                           top: (mediaquery.size.height -
                                                   mediaquery.padding.top) *
-                                              0.02),
-                                      height: mediaquery.size.height * 0.8,
+                                              0.01),
+                                      height: (mediaquery.size.height * 0.3) +
+                                          (prescriptions[indexx]
+                                                  .medicines
+                                                  .length *
+                                              (mediaquery.size.height * 0.1)),
                                       width: mediaquery.size.width,
                                       child: Column(
                                         children: <Widget>[
@@ -93,37 +66,45 @@ class _PatientCardsState extends State<PatientCards> {
                                                     CrossAxisAlignment.start,
                                                 children: <Widget>[
                                                   Text(
-                                                    patientCardList[index]
+                                                    prescriptions[indexx]
                                                         .doctorName,
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .headline6,
-                                                    maxLines: 3,
+                                                    maxLines: 1,
                                                   ),
                                                   Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: mediaquery
+                                                                .size.height *
+                                                            0.005),
                                                     width:
                                                         mediaquery.size.width *
                                                             0.5,
                                                     child: Text(
-                                                      patientCardList[index]
-                                                          .subTitle,
+                                                      prescriptions[indexx]
+                                                          .description,
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .subtitle2,
-                                                      maxLines: 5,
+                                                          .bodyText2,
+                                                      maxLines: 3,
+                                                      softWrap: true,
                                                     ),
                                                   ),
                                                 ],
                                               ),
-                                              CircleAvatar(
-                                                backgroundColor:
-                                                    Theme.of(context)
-                                                        .accentColor,
-                                                child: Icon(
-                                                  Icons.share,
-                                                  color: Colors.white,
+                                              Padding(
+                                                padding: EdgeInsets.all(10),
+                                                child: CircleAvatar(
+                                                  backgroundColor:
+                                                      Theme.of(context)
+                                                          .accentColor,
+                                                  child: Icon(
+                                                    Icons.share,
+                                                    color: Colors.white,
+                                                  ),
                                                 ),
-                                              ),
+                                              )
                                             ],
                                           ),
                                           Padding(
@@ -138,7 +119,9 @@ class _PatientCardsState extends State<PatientCards> {
                                           ListView.builder(
                                               physics:
                                                   const NeverScrollableScrollPhysics(),
-                                              itemCount: patientCardList.length,
+                                              itemCount: prescriptions[indexx]
+                                                  .medicines
+                                                  .length,
                                               shrinkWrap: true,
                                               itemBuilder:
                                                   (BuildContext context,
@@ -162,19 +145,18 @@ class _PatientCardsState extends State<PatientCards> {
                                                       CircleAvatar(
                                                         backgroundImage:
                                                             NetworkImage(
-                                                                patientCardList[
+                                                                prescriptions[
+                                                                        indexx]
+                                                                    .medicines[
                                                                         index]
-                                                                    .medicineImg),
+                                                                    .image),
                                                       ),
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
-                                                        right: (mediaquery.size
-                                                                    .width -
-                                                                mediaquery
-                                                                    .padding
-                                                                    .right) *
-                                                            0.02,
+                                                        right: (mediaquery
+                                                                .size.width) *
+                                                            0.005,
                                                       )),
                                                       Column(
                                                         crossAxisAlignment:
@@ -182,18 +164,23 @@ class _PatientCardsState extends State<PatientCards> {
                                                                 .start,
                                                         children: <Widget>[
                                                           Text(
-                                                            patientCardList[
+                                                            prescriptions[
+                                                                    indexx]
+                                                                .medicines[
                                                                     index]
-                                                                .medicineName,
+                                                                .name,
                                                             style: Theme.of(
                                                                     context)
                                                                 .textTheme
                                                                 .headline4,
                                                           ),
                                                           Text(
-                                                            patientCardList[
+                                                            prescriptions[
+                                                                        indexx]
+                                                                    .medicines[
                                                                         index]
-                                                                    .medicineOftenDay +
+                                                                    .dose
+                                                                    .toString() +
                                                                 ' Times per Day',
                                                             style: Theme.of(
                                                                     context)
@@ -204,15 +191,17 @@ class _PatientCardsState extends State<PatientCards> {
                                                         ],
                                                       ),
                                                       Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                        right: (mediaquery.size
-                                                                    .width -
-                                                                mediaquery
-                                                                    .padding
-                                                                    .right) *
-                                                            0.02,
-                                                      )),
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                          right: (mediaquery
+                                                                      .size
+                                                                      .width -
+                                                                  mediaquery
+                                                                      .padding
+                                                                      .right) *
+                                                              0.02,
+                                                        ),
+                                                      ),
                                                       Icon(
                                                         Icons.info,
                                                         color: Theme.of(context)
@@ -254,13 +243,14 @@ class _PatientCardsState extends State<PatientCards> {
                                                       size: 15,
                                                       color: Theme.of(context)
                                                           .accentColor),
-                                                  Text('Start',
+                                                  Text('Start ',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .overline),
                                                   Text(
-                                                    patientCardList[index]
-                                                        .start,
+                                                    DateFormat("MMMM d").format(
+                                                        prescriptions[indexx]
+                                                            .startDate),
                                                     style: TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 12,
@@ -279,13 +269,14 @@ class _PatientCardsState extends State<PatientCards> {
                                                       size: 15,
                                                       color: Theme.of(context)
                                                           .accentColor),
-                                                  Text('Finish',
+                                                  Text('Finish ',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .overline),
                                                   Text(
-                                                    patientCardList[index]
-                                                        .finish,
+                                                    DateFormat("MMMM d").format(
+                                                        prescriptions[indexx]
+                                                            .endDate),
                                                     style: TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 12,
@@ -335,14 +326,14 @@ class _PatientCardsState extends State<PatientCards> {
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
                                           Text(
-                                            patientCardList[index].doctorName,
+                                            prescriptions[indexx].doctorName,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .headline6,
                                             maxLines: 3,
                                           ),
                                           Text(
-                                            patientCardList[index].subTitle,
+                                            prescriptions[indexx].description,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .subtitle2,
@@ -407,10 +398,13 @@ class _PatientCardsState extends State<PatientCards> {
                                                   .accentColor),
                                           Text(
                                               'Start ' +
-                                                  patientCardList[index].start,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText2),
+                                                  DateFormat("MMMM d yyy")
+                                                      .format(
+                                                          prescriptions[indexx]
+                                                              .startDate),
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.grey)),
                                         ],
                                       ),
                                       Row(
@@ -421,10 +415,13 @@ class _PatientCardsState extends State<PatientCards> {
                                                   .accentColor),
                                           Text(
                                               'Finish ' +
-                                                  patientCardList[index].finish,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText2),
+                                                  DateFormat("MMMM d yyy")
+                                                      .format(
+                                                          prescriptions[indexx]
+                                                              .endDate),
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.grey)),
                                         ],
                                       ),
                                     ],
